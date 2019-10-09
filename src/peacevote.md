@@ -71,4 +71,5 @@ And lastly, we detected A bribery and coercion cases for buying the votes anonym
 So to sum up, we believe that elections were honest with significant citizen participation in casting votes and in hunting bribers. Everyone was able to follow the vote collection process and also execute counting himself. And lastly, the number of coercion cases A were too small to change the outcome of your candidacy.
 
 We are sincerely sorry for your loss,
+
 Election committee representative Y
