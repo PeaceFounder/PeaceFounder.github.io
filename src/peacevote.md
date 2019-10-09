@@ -75,129 +75,63 @@ Election committee representative Y
 
 # Imagining PeaceVote in NorthKorea
 
-In NorthKorea, elections are difficult as the state is corrupt, and it can coerce the citizens to vote in a desirable fashion. There is no freedom of speech; thus, facts propagate with high friction. Only a fraction of that might reach independent observers. Also, there would be an issue for citizens to trust state organizations for fighting bribery and coercion. Also, there would be a little trust that only once and all
-citizens can vote. And that each citizen would be able to vote
-anonymously as the state might keep a record of public keys and
-identities. It is pointless to find and report those crimes as they
-happen.
+In NorthKorea, elections are difficult as the state is corrupt, and it can coerce the citizens to vote in a desirable fashion. There is no freedom of speech; thus, facts propagate with high friction. Only a fraction of that might reach independent observers. Also, there would be an issue for citizens to trust state organizations for fighting bribery and coercion. Also, there would be a little trust that only once and all citizens can vote. And that each citizen would be able to vote anonymously as the state might keep a record of public keys and identities. It is pointless to find and report those crimes as they happen.
 
-What we can do, however well, is fieldwork and statistics if we have
-freedom for the observers to inquiry a random set of citizens in the
-state confidentially. Without this essential freedom for observers, it
-is not possible to asses whether the elections had been honest. The
-other requirements which the state must satisfy are:
+What we can do, however well, is fieldwork and statistics if we have freedom for the observers to inquiry a random set of citizens in the state confidentially. Without this essential freedom for observers, it is not possible to asses whether the elections had been honest. The other requirements which the state must satisfy are:
 
--   Accessibility to eligible citizen ledger for electronic voting. The
-    > data would contain the necessary information to get in touch with
-    > the person. Full data could be delivered to observers
-    > confidentially if privacy is of concern.
+-   Accessibility to eligible citizen ledger for electronic voting. The data would contain the necessary information to get in touch with the person. Full data could be delivered to observers confidentially if privacy is of concern.
+-   Every citizen can access and download anonymous public key ledger where the keys are signed in a chain.
+-   Each eligible citizen for electronic voting must own an ID card with the public key which is in the anonymous public key ledger.
+-   Citizens can deliver the votes anonymously to the one or multiple vote collecting places. The votes are available for everyone to download at any time.
+-   The citizens trust that the police accurately process marked votes. The police issue a certificate for willing citizens as proof for a random number generator to be marked if the obligation had not been satisfied (hash of random number + counter).
 
--   Every citizen can access and download anonymous public key ledger
-    > where the keys are signed in a chain.
+## Possible election abusement scenarios
 
--   Each eligible citizen for electronic voting must own an ID card with
-    > the public key which is in the anonymous public key ledger.
+-   Not all citizens are in the citizen ledger.
 
--   Citizens can deliver the votes anonymously to the one or multiple
-    > vote collecting places. The votes are available for everyone to
-    > download at any time.
+Observers select random locations in the state and make statistics on how many real people are in the civil registry.
 
--   The citizens trust that the police accurately process marked votes.
-    > The police issue a certificate for willing citizens as proof for a
-    > random number generator to be marked if the obligation had not
-    > been satisfied (hash of random number + counter).
+-   Not all citizens in the citizen ledger own an ID card with a public key which is in the anonymous public key ledger.
 
-Possible election abusement scenarios
-=====================================
-
--   Not all citizens are in the citizen ledger
-
-    -   Observers select random locations in the state and make
-        > statistics on how many real people are in the civil registry.
-
--   Not all citizens in the citizen ledger own an ID card with a public
-    > key which is in the anonymous public key ledger.
-
-    -   Observers select a random set of people from the citizen
-        > registry and try to get in touch with them. Asks if they own
-        > the ID card and guide them through the procedure of signing
-        > random string. That allows them to see if their ID card
-        > possesses one of the public keys from the anonymous public key
-        > ledger and to know the correctness of implemented asymmetric
-        > cryptography.
+Observers select a random set of people from the citizen registry and try to get in touch with them. Asks if they own the ID card and guide them through the procedure of signing random string. That allows them to see if their ID card possesses one of the public keys from the anonymous public key ledger and to know the correctness of implemented asymmetric cryptography.
 
 -   Some citizens own multiple identities, and so can vote more.
 
-    -   If we would live in a perfect world observer with a significant
-        > sample size would have a certain probability of finding an
-        > instance of a person with more than one identity. A more
-        > realistic case seems to be that there would be some fraction
-        > of people to which observers could not get in touch. It is
-        > pragmatic to assume that those are corrupt votes and adds to
-        > the error bar of the election result.
+If we would live in a perfect world observer with a significant sample size would have a certain probability of finding an instance of a person with more than one identity. A more realistic case seems to be that there would be some fraction of people to which observers could not get in touch. It is pragmatic to assume that those are corrupt votes and adds to the error bar of the election result.
 
--   The bribers/coercers do have access to the equipment which registers
-    > a marked random number generator. Or have access to a backdoor
-    > which allows making unmarked votes safely.
+-   The bribers/coercers do have access to the equipment which registers a marked random number generator. Or have access to a backdoor which allows making unmarked votes safely.
 
-    -   The activists (assuming that there are some) could film and
-        > report such crime.
+The activists (assuming that there are some) could film and report such crime.
 
--   The state does not act on marked votes. The citizen is not able to
-    > revote in secret.
+-   The state does not act on marked votes. The citizen is not able to revote in secret.
 
-    -   The citizen owns a paper certificate issued by police that a set
-        > of random numbers are marked. He can show the document to the
-        > third party proving that the counted vote is invalid and that
-        > he was not able to revote.
+The citizen owns a paper certificate issued by police that a set of random numbers are marked. He can show the document to the third party proving that the counted vote is invalid and that he was not able to revote.
 
--   The full database of marked random number generators had leaked.
-    > Bribers can safely buy valid votes anonymously on the internet.
+-   The full database of marked random number generators had leaked. Bribers can safely buy valid votes anonymously on the internet.
 
-    -   The activists can report that vote-selling does not work with
-        > marked votes but works with valid ones (one, however, needs to
-        > sacrifice).
+The activists can report that vote-selling does not work with marked votes but works with valid ones (one, however, needs to sacrifice).
 
--   The votes can not be delivered anonymously. For example on may think
-    > that it is "a good idea" to log in before uploading a vote.
+-   The votes can not be delivered anonymously. For example on may think that it is "a good idea" to log in before uploading a vote.
 
-    -   Could be detected by observers by following how citizens make
-        > the vote.
+Could be detected by observers by following how citizens make the vote.
 
--   The votes could be filtered to achieve the desired result. Or there
-    > is identity theft.
+-   The votes could be filtered to achieve the desired result. Or there is identity theft.
 
-    -   After elections observers select a random set of citizens from
-        > the registry and get in touch with them. Then they would lead
-        > them through the procedure for seeing how they voted in the
-        > public registry. If they would not see their vote or if
-        > someone would have voted in their place with the same public
-        > key, they could report that.
+After elections observers select a random set of citizens from the registry and get in touch with them. Then they would lead them through the procedure for seeing how they voted in the public registry. If they would not see their vote or if someone would have voted in their place with the same public key, they could report that.
 
 -   The state could announce result disregarding the count.
 
-    -   Observers can execute vote-counting code and get the truth.
+Observers can execute vote-counting code and get the truth.
 
--   The state could know how each citizen had voted if it keeps a
-    > registry between an anonymous public key and identity.
+-   The state could know how each citizen had voted if it keeps a registry between an anonymous public key and identity.
 
-    -   If such a registry exists, it would be very tempting to use
-        > that. At some time the registry would reach a person of some
-        > integrity who would only need to copy some of the entries and
-        > to give them to a third party. That would be enough to prove
-        > that elections had not been honest at any time.
+If such a registry exists, it would be very tempting to use that. At some time the registry would reach a person of some integrity who would only need to copy some of the entries and to give them to a third party. That would be enough to prove that elections had not been honest at any time.
 
--   Added random number could be static, making it easier to distinguish
-    > valid votes from invalid ones. (but how?).
+-   Added random number could be static, making it possible to distinguish valid votes from invalid ones. For example, one would look into anonymous public key ledger to see if the random number is the same as used for signing. 
 
-    -   Observers check if in vote signatures at the collective vote
-        > registry changes the random number from election to election.
-        > Or when a person decides to change the vote in the same
-        > elections.
+Observers check if in vote signatures at the collective vote registry changes the random number from election to election. Or when a person decides to change the vote in the same elections.
 
 -   The state could limit candidates voting to desirable ones.
 
-    -   Collective disobedience. People could sign messages which are
-        > out of the states offering. Those should be accepted by vote
-        > collecting sites.
+Collective disobedience. People could sign messages which are out of the states offering. Those should be accepted by vote collecting sites.
 
