@@ -9,4 +9,4 @@ I am looking for people who recognize innovation and are resistant to hype. Who 
 + A clear understanding of the reasons why Europe and the world fall in the fascism. 
 + Had read at least one thick book which you can discuss in relation with the  PeaceFounder organization.
 
-Contact me directly over janiserdmanis protonmail.ch.
+Contact me directly over `janiserdmanis at protonmail ch`. 
