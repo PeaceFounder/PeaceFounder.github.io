@@ -1,3 +1,5 @@
+@def title = "KeyChain"
+
 # KeyChain
 
 Imagine ordinary elections where you go at the ballot box to vote for candidates/parties of your choice. There would be gatekeepers which would check the validity of your passport and would make a stamp into it so no one would not be able to vote more than once. You would get an envelope and would go to the voting booth where you would have privacy to put your choice in the envelope. But let's make them special, and in the envelope, you would put the public key of your generated key pair. 

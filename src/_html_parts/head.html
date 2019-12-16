@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{if hasmath}} {{insert head_katex.html }}     {{end}}
+  {{if hascode}} {{insert head_highlight.html }}   {{end}}
+  <link rel="stylesheet" href="/css/judoc.css">
+  <link rel="stylesheet" href="/css/basic.css">
+  <!-- <link rel="icon" href="/assets/infra/favicon.png"> -->
+  {{isdef title}} <title>{{fill title}}</title>  {{end}}
+</head>
+<body>
+  <header>
+    <div class="blog-name">
+      <img src="/assets/infra/logo.svg" style="width:300px;border:0;">
+    </div>
+    
+    <nav>
+      <ul>
+        <li><a href="/">Manifesto</a></li>
+        <li><a href="/keychain.html">KeyChain</a></li>
+        <li><a href="/synchronicballot.html">SynchronicBallot</a></li>
+        <li><a href="/peacevote.html">PeaceVote</a></li>
+        <li><a href="/peacecard.html">PeaceCard</a></li>
+        <li><a href="/join.html">Join</a></li>
+      </ul>
+      <!-- <img src="/assets/infra/hamburger.svg" id="menu-icon"> -->
+    </nav>
+  </header>
+
+<!-- Content appended here -->

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Un-minified script so that can play a bit -->
+<link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+  
+  <link rel="stylesheet" href="/css/judoc.css">
+  <link rel="stylesheet" href="/css/basic.css">
+  <!-- <link rel="icon" href="/assets/infra/favicon.png"> -->
+   <title>SynchronicBallot</title>  
+</head>
+<body>
+  <header>
+    <div class="blog-name">
+      <img src="/assets/infra/logo.svg" style="width:300px;border:0;">
+    </div>
+    
+    <nav>
+      <ul>
+        <li><a href="/">Manifesto</a></li>
+        <li><a href="/keychain.html">KeyChain</a></li>
+        <li><a href="/synchronicballot.html">SynchronicBallot</a></li>
+        <li><a href="/peacevote.html">PeaceVote</a></li>
+        <li><a href="/peacecard.html">PeaceCard</a></li>
+        <li><a href="/join.html">Join</a></li>
+      </ul>
+      <!-- <img src="/assets/infra/hamburger.svg" id="menu-icon"> -->
+    </nav>
+  </header>
+
+<!-- Content appended here -->
+
+<div class="jd-content">
+<h1 id="synchronicballot"><a href="/synchronicballot.html#synchronicballot">SynchronicBallot</a></h1>
+<p>SynchronicBallot is a secure, transparent and anonymous electronic voting solution where authority does not have chances to fake it &#40;send me an email if you do not agree&#41;. The anonymity is protected by a knowledge that maintainers of two parts, GateKeeper and BallotBox does not trust each other and with members choice of which BallotBox to use. In the heart of the protocol is a concept of synchronicity - multiple votes happening at the same time with a common meaning. </p>
+<p>The setup of SynchronicBallot assumes that every participant has a private/public key pair for performing electronic signatures. The public key of the participants is known to the organizer committee. A minimal setup entails two servers - one for gatekeeping responsible for authentification with the members and others for casting the votes. The trust for the system is based on the trust that the maintainers of gatekeeping and the maintainers for observers would not ever trust each other to compromise the system. </p>
+<p>For simplicity, let&#39;s abbreviate Diffie-Hellman key exchange algorithm and establishment of a secure connection with DH. Also, let&#39;s visualize the authentification with arrows - the one-directional arrow is like HTTPS a two-directional arrow-like SSH connection. </p>
+<p><img src="/assets/infra/protocol.svg" alt="" /></p>
+<p>Let&#39;s discuss each of the steps in more detail:</p>
+<ol>
+<li><p>GateKeeper establishes a secure connection &#40;SSH sense&#41; with BallotBox. The reason why the connection is made secure is not because of eavesdroppers but rather to prevent undetected redirection or corruption of the data which would make the protocol fail at step 9.</p>
+</li>
+<li><p>The GateKeeper chooses the number of members participating in the ballot &#40;N&#41;. Larger N gives higher anonymity but at the same time, a higher probability for failing - due to unstable connections and due to members who sabotages step 9. </p>
+</li>
+<li><p>Each member establishes a secure connection with GateKeeper &#40;SSH sense&#41;. Again the secureness of the connection is to prevent undetected misdirection or data corruption. The confidentiality also excludes the unlikely ISP collaboration with BallotBox to compromise the anonymity of the votes.</p>
+</li>
+<li><p>Each member establishes a secure connection with BallotBox through GateKeeper &#40;HTTPS sense&#41;. The security of the connection is necessary to prevent anyone from seeing what members voting message is. The redirection through GateKeeper has multiple advantages over the direct connection:</p>
+<ul>
+<li><p>It allows GateKeeper to detect whether a member had sent the voting message to the BallotBox, thus allowing to isolate points of failure. </p>
+</li>
+<li><p>It allows keeping BallotBox IP address hidden thus preventing DDOS attacks to the BallotBox &#40;unless bully has access to ISP&#41;.</p>
+</li>
+<li><p>It prevents one member from voting multiple times. </p>
+</li>
+<li><p>It prevents BallotBox to see the IP address of the voter.</p>
+</li>
+</ul>
+</li>
+<li><p>Each member sends the message of the vote, knowing that it reaches the BallotBox confidentially. Since the secure connection was one-sided &#40;HTTPS sense&#41; the received message by BallotBox is anonymous &#40;unless BallotBox collaborates with GateKeeper&#41;.</p>
+</li>
+<li><p>BallotBox collects all received messages and forms a ballot with a random message order. In that way, the GateKeeper does not have a way to figure out which message corresponds to which member. </p>
+</li>
+<li><p>BallotBox sends the ballot to GateKeeper. That allows GateKeeper to ensure that all members are receiving the same ballot. </p>
+</li>
+<li><p>GateKeeper sends the ballot to each of the participating members.</p>
+</li>
+<li><p>Each member checks that his message is in the ballot and signs it with a voting signature &#40;the same key could be used&#41; and is delivered back to GateKeeper. A different kind of signature &#40;which is currently not implemented&#41; is needed because if GateKeeper is corrupt or hacked it can feed members to sign a hash already at step 3. when Diffie-Hellman key exchange takes place.  </p>
+</li>
+<li><p>GateKeeper receives all signatures and publishes the signed ballot. </p>
+</li>
+</ol>
+<p>To fake the vote of the person, one needs to gain access to his/her private key. To reveal the anonymity, both GateKeeper and BallotBox needs to be compromised. If such trust level is not enough, one can insert onion routers between GateKeeper and BallotBox or do a key braiding multiple times with different BallotBoxes each time &#40;see next section&#41;.</p>
+<p>The essential aspect of the protocol is that the member has the final say whether he/she would accept the ballot to be successful or not. In a way, one could imagine GateKeeper as an oracle who generates random ballot which turns out to contain members messages and so is approved by them. That is synchronic. Uses </p>
+<h1 id="uses"><a href="/synchronicballot.html#uses">Uses</a></h1>
+<p>The most fundamental use of the protocol is for performing secure, anonymous and transparent ballots. The organizing committee would define the eligible set of members and predefine the voting messages which members would use for voting &#40;members would add a random token to make the messages unique&#41;. The members would have a choice on which BallotBoxes and GateKeepers they would trust. In the end only a signed ballot among different members matters. The trust in the anonymity of the vote lies in the knowledge of mistrust between BallotBox and GateKeepers. That requirement can be easily realized, so when maintained by enemies, persons of integrity or with a geographical distance between maintainers. </p>
+<p>All that said SynchronicBallot is a grand scheme and can even be protected with smartcards &#40;see PeaceCard&#41;. However, it has multiple drawbacks. First of all, anonymity depends on the number of people who are voting at the same time. Whereas success depends that connection for each member is stable and that every member would sign the ballot independent of the outcome. That would be a good breeding ground for sabotage. &#40;one needs that losing party signs the ballot because otherwise, your choice would turn from anonymity to certainty&#41;. Fortunately, the issue can be resolved by putting public keys in the place of messages and then after every member validates the ballot on can individually sign a voting message and deliver that anonymously.</p>
+<h2 id="key_braiding"><a href="/synchronicballot.html#key_braiding">Key braiding</a></h2>
+<p>An exciting extension to the scheme is when one instead of voting with predefined messages one votes public keys in the ballot &#40;in practice a hash of them&#41;. This process I call key braiding, which in the result produces a list of anonymous public keys &#40;KeyChain&#41;. The keys at KeyChain would be eligible for voting, and with the help like a TOR, voters would be able to deliver the votes anonymously. </p>
+<p>Further use of KeyChain is to do the braiding with SynchronicBallot again. The point of that would be to increase the level of anonymity while still keeping the convenience of having light ballots. That would allow braiding with new members and would drop the requirement for all people to be present at the same time. Furthermore, the members can repeat the process infinitely.</p>
+<p>The KeyChain has a unique use for communications. Often we are deceived by labelling the arguments as a fight between personalities rather than between ideas. On anonymous forums and discussion places, we are deceived by paid trolls who work with multiple usernames to form an impression of public opinion.</p>
+<p>The anonymity and linkability of the signatures made with keys from KeyCahin can give equal voice to everyone. Also, the KeyChain can prevent the organization of oppressing individuals to keep secrets against their will. It would be much easier to whistleblow for individuals who would know that their message would be heard with credibility. Whereas others would be able to vote on the message to either confirm or deny its truth. This is how the next-generation social networking developed under PeaceVote.jl is going to serve the people. </p>
+<h2 id="synchronic_payments"><a href="/synchronicballot.html#synchronic_payments">Synchronic Payments</a></h2>
+<p>Another compelling application for SynchronicBallots is for a payments system. The procedure would be as follows:</p>
+<ol>
+<li><p>The client generates a key pair.</p>
+</li>
+<li><p>The client delivers the public key to the bank and puts money in it, which thus works like an account. </p>
+</li>
+<li><p>The bank publishes the public key and the amount of money in it.</p>
+</li>
+<li><p>The bank hosts SynchronicBallots with different nominal values for the transaction. &#40;Let&#39;s say 5, 10, ... euros&#41;</p>
+</li>
+<li><p>To make a transaction the recipient &#40;which could be himself&#41; generates a key pair &#40;or gives an existing one&#41; and gives the public key to the recipient.</p>
+</li>
+<li><p>The client performs a vote with the key from which funds should be taken and puts as a message recipient public key.</p>
+</li>
+<li><p>The bank publishes the ballots which then anyone can use to calculate the funds. </p>
+</li>
+</ol>
+<p>The benefit of the system is that it has much lower security requirements on the bank&#39;s side is easier to maintain and scales well with the number of participants wherewith more participants the bank can offer more ballots with more nominal values. The society has the benefit to analyze the trustworthiness and usefulness of the bank for themselves. 
+<div class="page-foot">
+  <div class="copyright">
+    &copy; Janis Erdmanis. Last modified: December 16, 2019. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+  </div>
+</div>
+
+</div>
+<!-- CONTENT ENDS HERE -->
+    
+        <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+    
+    
+  </body>
+</html>

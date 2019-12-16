@@ -1,3 +1,5 @@
+@def title = "PeaceCard"
+
 # PeaceCard
 
 PeaceCard is software for smartcards which enables to secure electronic ballots against bribery and coercion. There are multiple issues for the ballots performed with KeyChain, particularly on those aspects. For example, one can buy member keys to get the desired result within the community. Or one can watch the person while he/she is still voting, which can even be done with some proxy anonymously. Also, malware on the device used for voting is a significant problem. For preventing such cases, a hardware solution is necessary to protect the keys and would give members tools for fighting against coercion cases. 
