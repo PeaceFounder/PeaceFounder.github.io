@@ -34,66 +34,73 @@
 <!-- Content appended here -->
 
 <div class="jd-content">
-<h1 id="peacevote_outdated"><a href="/peacevote.html#peacevote_outdated">PeaceVote &#40;outdated&#41;</a></h1>
-<p>It is interesting to observe that the design of PeaceVote voting system does not depend on trustworthy authority. That allows anyone to gather people and make a vote. And even that anyone can be an anonymous person from the group whose responsibility is to initiate voting on proposals and maintain knowledge on how people can vote. It is finally a time where we move away from toothless platforms like &quot;change.org&quot;, &quot;manabals.lv&quot; and move towards organized activism, political parties, corporations and symbiosis. Noone shall have the power to tell us on what to vote&#33;</p>
-<p>But why would one want to vote when we are powerless? This probably is the question you ask yourself now. Here is the thing. Collectively we are very powerful. Together we can disobey, we can strike, we can boycott, and in doing so, we regain our security in knowing that we are not the only ones. We can collectively fund projects which benefits us working class and our recognition. We can decide together on how to invest for a fulfilling retirement. The profit is not the answer; the wellbeing is. There is a great demand for democracy.</p>
-<p>But why then no-one else had entered this market before? Present technology indeed allows making bailouts, but it requires us to have trust in the authority. Everyone expects their solution to be more trustworthy and so we get fragmentation of power. In the end, we face such obscurity in our personal lives to maintain such a variety of technologies, and so we lose our interest. We do not vote; we do not participate in making a change. </p>
-<p>PeaceVote can be different. Firstly, there would be no fragmentation of authority when we consider them all as one. There would be no fragmentation when the cryptographic protocol does not leave a room for better security when it already satisfies all requirements for an honest bailout. There would be no room for fragmentation when the user application would be open-sourced and developed by an open community with the best open-source technology, namely Rust and Julia.</p>
-<p>Let&#39;s now turn to the main point - how would the implementation of PeaceVote on mobile works. Firstly one needs to establish a community where either all members can physically come together or members can form a secret communication between other members. It is remarkably simple to do that online. And here is the strategy.</p>
-<p>First one establishes an online community, for example, a Facebook,  or a Telegram group. The community has it&#39;s maintainer could be publically known or anonymous person from the group. He has the power to merge new members to the group, and responsibility to collect valid anonymous signatures. Physically that can be done with bailout box. Remarkably a valid anonymous key can also be delivered online.</p>
-<p>In the online situation, the maintainer decides on a public database he wants to use where everyone without authorization can host messages and then see them. Usually, one would want that to be as decentralized as possible to avoid DDOS attacks. </p>
-<p>Then the maintainer generates a private key and then messages that privately for the new members at the same time. A more massive pile of new members means greater anonymity. Also, maintainer publishes the public key for everyone to see and be able to convince themselves that only eligible anonymous public keys are merged. In case of private key leaks, there would be members who would see that their public key is not in the merged list and could protest. The procedure then, is repeated. And the final step is for the users to generate their private keys and deliver signed public keys with the private key maintainer gave anonymously with Tor or another anonymizer. </p>
-<p>So at this point, the anonymous public-key ledger is established. The voting can begin by people signing arbitrary messages and designing arbitrary vote-counting and vote collecting protocols. Usually, however, one would want some order. This is where the community designs and votes on how the maintainer should act in certain situations; what is the procedure to change the maintainer and so on. Thus the maintainer, in the end, is just a servant for the community. That makes PeaceVote design very powerful to fight the tyranny of greed and fear&#33;</p>
-<h2 id="specs_of_mobile_application"><a href="/peacevote.html#specs_of_mobile_application">Specs of mobile application</a></h2>
-<p>Let&#39;s describe the application from the user&#39;s perspective for clarity. Firstly, the user applies as a member of the community, for example, a Telegram group who uses PeaceVote for decision making, which is specified in the group metadata. There he can make conversations, discuss stuff publically and also establish a secret communication channel between the members. </p>
-<p>To start voting, the user installs the PeaceVote app from a trusted source. When the user starts the app, he is asked to connect it to Telegram, which he does. After that, the app scans for metadata of the groups to see if they use a PeaceVote for decision making. In the metadata, the app finds where the associated git repository for voting is hosted, where further information could be found and downloads that locally, where it is scanned and checked for integrity.</p>
-<p>After that, the application asks for a new set, and it&#39;s associated private key from the maintainer. When enough number of people had been in the list to ensure anonymity, the private key is delivered through the secure channel, for example, Telegram. At that point, the application generates the anonymous private key and signs it with the set&#39;s private key and delivers that in the same fashion as a vote. Then when maintainer had collected all public keys, he merges them in the repository. The app checks that the key is in the newly merged set and if not proceeds with revealing the identity and the signed public key in the group chat. At that point, the merge would need to be reverted, and the procedure would be repeated.</p>
-<p>At this point, the user is capable to vote on the proposals which are happening at that moment within the community. In the application, he/she sees them as in email client with some descriptive information, with voting options and deadline. It could also contain information on the current result for the vote. That would be specified in the particular proposal.</p>
-<p>When the user decides on the vote, he oppens the proposal in the app. There he finds the action to vote and puts down his choice. The choice would initiate a signing process with the private key associated with the community. Then the vote would be delivered in a way as specified in <code>communication.jl</code>. The app would then follow that the valid votes including his own remain in the public database until the bailout ends and the maintainer merges valid ballots in the git. After that, the votes are downloaded from the repo and counted as specified in <code>counting.jl</code> and the result shown next to the proposal.</p>
-<h2 id="the_structure_of_the_git_repository"><a href="/peacevote.html#the_structure_of_the_git_repository">The structure of the git repository</a></h2>
-<p>The repository has the following tree structure:</p>
-<pre><code class="language-julia">/ledger
-  set1
-  set2
-	...
-/proposals
-  proposal1
-  proposal2
-	...
-/votes
-  proposal1
-  proposal2
-	...
-/src
-  ComunityA.jl
-  integrity.jl
-  communication.jl
-  counting.jl
-Manifest.toml
-Project.toml</code></pre>
-<p>Let&#39;s now break down what each piece does:</p>
+<h1 id="the_peacefounders_project"><a href="/peacevote.html#the_peacefounders_project">The PeaceFounder&#39;s project</a></h1>
+<p>Online voting systems had been active research problem since the discovery of asymmetric cryptography. However, none to my knowledge is trustworthy. It is easy to imagine a software-independent system where anonymity is disregarded by having a public ledger to which one submits their signed votes. But the anonymity is essential to the integrity of elections&#33; Or one imagines a software which is perfect and so preserves anonymity while being secure. However, what if a villain takes over the server and replaces the software with its own?</p>
+<p>There are many metrics which had been introduced for measuring the trustworthiness of the electronic voting system. I propose to group them into three categories - transparency, security and anonymity. Which are easy to remember through existing technologies:</p>
 <ul>
-<li><p><code>/ledger</code> contains the eligible anonymous public keys which are separated in sets. Sets are the contain list of public keys which were collected by a maintainer with the single private key. The private key is also used to sign the previous block to make the database untampered.</p>
+<li><p>security &#43; anonymity: Trust the system X doing Y. Most electronic voting systems fit into this category, for example, the Estonian system. Their Achilles heel is the software dependance.</p>
 </li>
-<li><p><code>/proposals</code> contain the information about bailouts which had happened and the bailouts which are happening. Essentially it is like a common mailbox.</p>
+<li><p>security &#43; transparency: Trust the voter X being independent of Y. Such a voting system makes sense when X is representative of Y. However, for ordinary citizens, this is inappropriate as that enables easy coercion, shaming and bribery. </p>
 </li>
-<li><p><code>/votes</code> contain results of the bailouts. Each bailout contains a list of signatures made by one of the keys from the anonymous public ledger collected from predefined source and merged by the maintainer. The purpose of it is to be more like a trophy as each device would count the votes from the anonymous communication source themselves.</p>
-</li>
-<li><p><code>/src</code> contains the code which defines how the community is being built. Specifically:</p>
-<ul>
-<li><p><code>integrity.jl</code> contains code which is necessary to verify that anonymous public key ledger is not tampered. </p>
-</li>
-<li><p><code>communication.jl</code> establishes a protocol with which to send the vote to bailout box anonymously &#40;like a Tor&#41;. And also it establishes the public channel for downloading the votes.</p>
-</li>
-<li><p><code>counting.jl</code> contains the protocol on how votes are counted. Contains logic about expiring public keys, what to do when the user had voted twice, perhaps a second choice protocol, etc. Also, it defines the majority. </p>
+<li><p>transparency &#43; anonymity: Trust X not doing Y. These are all voting systems to which you can authorize with anonymous means. The best example would be a privately generated bitcoin by a PoW which acts as a token for a vote to be transferred to an account A, B and C representing a choice.</p>
 </li>
 </ul>
+<p>More specifically, I propose to fix the definitions for anonymity, transparency and security as follows:</p>
+<h3 id="transparency"><a href="/peacevote.html#transparency">Transparency:</a></h3>
+<ul>
+<li><p>Open source and open participation</p>
+</li>
+<li><p>Software independence. If someone hacks in the system and replaces that with his own, he shall not be able to change an election outcome without being detected. &#40;I apply this notion here as that the collected data would not change, so it does not overlap with verifiability.&#41;</p>
+</li>
+<li><p>Individual verifiability. See proof how you voted and that you were counted.</p>
+</li>
+<li><p>Universal verifiability. Fairness and accurateness can be proved from publically available data.</p>
+</li>
+</ul>
+<h3 id="security"><a href="/peacevote.html#security">Security:</a></h3>
+<ul>
+<li><p>Legitimacy. All participating members are real and verified. </p>
+</li>
+<li><p>Accountable. Misbehaving individuals can be isolated. </p>
+</li>
+<li><p>The publically available data can not be tampered with to change the election outcome. &#40;cryptographically secure&#41;</p>
+</li>
+<li><p>No single attackable entity &#40;phone, server, cryptographic protocol, ....&#41; which can significantly change the election outcome. &#40;There is always a possibility of malware. I assume that it is a minority and the detection and prevention of that is the Vendor&#39;s responsibility whose reputation would be at stake.&#41;</p>
+</li>
+</ul>
+<h3 id="anonymity"><a href="/peacevote.html#anonymity">Anonymity:</a></h3>
+<ul>
+<li><p>Privacy: Noone knows how you voted without your cooperation.</p>
+</li>
+<li><p>Prooflessness: You can not prove how you voted for another person, even with your cooperation, also known as receipt freeness and secret ballot. I don&#39;t use those definitions because the voting system can have a receipt, but it might not be the only one. </p>
+</li>
+</ul>
+<p>Prooflessness can be implemented with software by giving the citizen a choice to vote in a traditional voting ceremony which would override the online voting receipt while not revealing whether he/she did so to the public. In such a case, the system needs a trusted auditor who produces a compensated tally. It seems reasonable to assume that the secret ballot would be much smaller than a public &#40;not open&#41; ballot thus universal verifiability would still hold. However, before, that is reasonable to implement one needs to prevent such a simple thing as identity selling which one could achieve with hardware &#40;see the PeaceCard project&#41;. </p>
+<p>The focus thus for PeaceVote is voluntarily democracies. It is the democracies of communities where members get engaged by making a significant change in their surroundings and so would want to protect their democracy. The privacy would make decisions less group biased and more thoughtful by individuals themselves for the community. The democracy could also be a great tool to unite audiences of two opposing divisions of the society by giving them the ability to delegate representatives for a discussion.  The system is also useful for anonymous questionnaires where the minority members do not feel safe to be publically known. Or for whistleblowers who do feel that their integrity had been intact. The last part is essential to punish those members who are documented to sell their votes on the field or sell their representative power within the community. </p>
+<h1 id="the_design_of_peacevote"><a href="/peacevote.html#the_design_of_peacevote">The design of PeaceVote</a></h1>
+<p>The design of PeaceVote voting system as basis uses a thought experiment. Imagine that you go to elections, register with a gatekeeper and enter the ballot cabin with the envelope. Now instead of selecting candidates, you put in a public key which you have generated in secret and put the envelope in that ballot box. The keys public keys collected that way would have a great property: anonymity and legitimacy. Those keys then allow doing anonymous, transparent and secure electronic voting.  </p>
+<p>But of course, life is not simple, and no one would try to explain to an ordinary person what the public key is and how to securely generate that. Instead, we need to have an electronic voting system to get anonymous keys for electronic voting. Right, that is a tautology. Can we do better?</p>
+<p>Let&#39;s consider an electronic ballot server which does have some reason of trust, is secure and anonymous by design. Multiple people would participate and would form a ballot. The server would randomize the ballot and publish that. Since the server is like a black box is there anything else what we can do to increase the trust of the result? In the end, we do not want to lose the ability to vote.</p>
+<p>We can validate ballot&#33; Every participating member must sign the ballot to confirm that his newly generated key is there. If everyone signs the ballot, we form a braid which connects old input keys with new output keys. In this way, we for sure, know that the system is secure. Whereas the anonymity of new keys is guaranteed by having trust in the system and depends on the ballot protocol used.  However, there is a pressing issue with such a design. What if a participating member refuses to sign the ballot? Shall we consider him a victim or a villain? Since the relation between input and output is lost, we can not give any knowledge on the issue. Such an electronic voting system is simply not accountable and scales badly as we increase the number of participants.</p>
+<p>The idea I am proposing is to do multiple small ballots, which we can retry quickly in case a participant refuses to sign the ballot, and chain them together to braid anonymity. This is the idea of the BraidChain which firstly allows scaling of unaccountable voting systems and secondly offers a natural extension for distributing the trust of anonymity over multiple participating ballot servers. Thus, in the end, we obtain the list of anonymous and legitimate keys which allows us to do secure, anonymous and transparent electronic voting. </p>
+<h1 id="references"><a href="/peacevote.html#references">References</a></h1>
+<p>After I finalized the design and found it trustworthy from my perspective, I tried to research shit of existing systems, the values and general criticisms of electronic voting. For example, I discovered that <code>SynchronicBallot.jl</code> which is the system I developed as part of functional <code>Community.jl</code> turns out is not very novel as it is a mixnet combined with kind of a blind signature scheme and was remarkably used to my surprise for Bitcoin in part of CoinJoin project and derivatives. Perhaps my contribution here was an extra validation step, but I don&#39;t know for sure. These are, in my opinion, the most important references I have found so far about electronic voting:</p>
+<ul>
+<li><p>https://www.youtube.com/watch?v&#61;LkH2r-sNjQs</p>
+</li>
+<li><p>https://www.youtube.com/watch?v&#61;abQCqIbBBeM&amp;feature&#61;emb_title</p>
+</li>
+<li><p>https://en.wikipedia.org/wiki/Software_independence</p>
+</li>
+<li><p>https://en.bitcoin.it/wiki/CoinJoin</p>
+</li>
+<li><p>https://arxiv.org/pdf/1707.08619.pdf</p>
 </li>
 </ul>
 
 <div class="page-foot">
   <div class="copyright">
-    &copy; Janis Erdmanis. Last modified: December 16, 2019. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
+    &copy; Janis Erdmanis. Last modified: February 05, 2020. Website built with <a href="https://github.com/tlienart/JuDoc.jl">JuDoc.jl</a>.
   </div>
 </div>
 
