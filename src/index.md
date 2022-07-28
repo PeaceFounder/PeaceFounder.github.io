@@ -1,4 +1,4 @@
-@def title = "Manifesto"
+@def title = "Vision"
 
 ```
 Imagine there's no countries
