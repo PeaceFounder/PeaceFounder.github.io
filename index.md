@@ -180,7 +180,7 @@ The project currently does have only one developer: Janis Erdmanis. You can get 
 
     Because I did not want to learn or write Java. 
 
-More serisoly speaking Julia type ssytem together with multiple dispatch makes it possible to have a lean, modular codebase which is cross platform and rarelly breaks things when Julia version is updated. For instance, ShuffleProofs.jl tests works on julia 1.0 while it was developed on julia 1.7 without any concern. 
+More serisoly speaking Julia type ssytem together with multiple dispatch makes it possible to have a lean, modular codebase which is cross platform and rarelly breaks things when Julia version is updated. For instance, ShuffleProofs.jl tests works on julia 1.0 while it was developed on julia 1.7 without any concern to backwards compatability. 
 
 Furthermore, a lot of evoting system parts are not yet rigorously specified and it may be the case that some intended uses of cryptographic primitives may not be secure. Thus ability to refactor/reorganize code is important in the current state of the development. 
 
