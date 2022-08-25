@@ -89,7 +89,7 @@ With such separation, the centralization issue disappears as anyone can particip
 
 The accountability of the election also simplifies. We only need to check that each outgoing pseudonym from the knot is owned by one incoming pseudonym and that valid pseudonyms have signed votes. Fortunately, there are ways to do that.
 
-## How to tye a strong knot
+## How to tie a strong knot
 
 Imagine a classroom full of people where the teacher passes through a blank page on which each pupil shall write his secret pseudonym signature and, before passing the page to the next pupil, folds it in. After the page had gone through all class, the teacher opened the page and got the list of all pseudonyms. 
 
