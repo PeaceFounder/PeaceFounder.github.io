@@ -5,6 +5,7 @@
 
 **This page is under a heavy development and is published as is in a very first draft stage to provide most updated infomration about PeacFounder project. Check out later for a better reading experience.** 
 
+
 # Landscape
 
 ## Accountability
@@ -37,8 +38,7 @@ To recap, we need privacy to prevent coercion and intimidation of voters, securi
 
 -----------------
 
-  * Software independence by Rivest
-  * Accountability paper
+{{cite rivest2008 park2021 belanger2016 benaloh2015 christen2020 kusters2010 jamroga2021}}
 
 ## E-voting
 
@@ -54,7 +54,7 @@ Also, another direction where voting could be eye-opening is that it is possible
 
 Unfortunately, all these benefits have been put on the sidelines for voting systems. In fact, most popular designs make it even harder to have preferential voting when homomorphic vote counting is used as a cryptographic primitive. But why just not take venture capital and build an app which would do all these things? The answer is remarkably simple, and it's because of efficiency.
 
-To help you see that, imagine if it would be possible to have a single ballot box for a whole nation. Since it would be so efficient, it would suffice to be managed by a few officers. When you go to vote, you would see all the same procedures and gatekeepers be in place as in less efficient variant. The main problem is how could you be sure that the efficient officers are not deviating from a protocol? Neither you would have cross accountability between neighbouring pooling stations nor know any of the officers who count the votes. And you know the famous phrase by Stalin, don't you?
+To help you see that, imagine if it would be possible to have a single ballot box for a whole nation. Since it would be so efficient, it would suffice to be managed by a few officers. When you go to vote, you would see all the same procedures and gatekeepers be in place as in less efficient variant. The main problem is how could you be sure that the efficient officers are not deviating from a protocvol? Neither you would have cross accountability between neighbouring pooling stations nor know any of the officers who count the votes. And you know the famous phrase by Stalin, don't you?
 
 To make it clear, privacy is hard because a large amount of data can be copied instantly or silently collected during casting. At the same time, accountability is hard as a large amount of data can be manipulated at scale without leaving any traces. Thus we put a final nail to the idea that we could just leave elections to our efficient voting officers and pay them handsomely, to be honest. 
 
@@ -66,8 +66,8 @@ Not quite so. Due to the use of encryption mixnet, the ballots are limited to ca
 
 ---------------------------
 
-  * Negative vote buying
-  * Review voting systems
+
+{{cite schneider2017 bernhard2017 morgan2010 sampigethaya2006 gibson2016 sampigethaya2006v2}}
 
 ## Alternative
 
@@ -125,17 +125,18 @@ The end result is that the mixing part can be safely delegated to a third party 
 
 ------------------
 
-  * Essential resources for zero-knowledge proofs 
-    * The first paper showing logarithm equality
-    * Vitaek blog post
-  * Recomputing public keys for shifted generators and their variations have already been proposed together with voting systems but seems to have been sidelined
-    * DSA1
-    * DSA2
-    * CryptoSanta
-  * For WikstromTeralius variant of shuffle, check out
-    * verificatum.org
-    * Haeinis pseudocode
-    * Verifier specification
+Essential resources for zero-knowledge proofs:
+
+
+{{cite brickell1993 buterin2022}}
+
+Recomputing public keys for shifted generators and their variations have already been proposed together with voting systems but seems to have been sidelined:
+
+{{cite ryan2016 haenni2011 neff2001}}
+
+For WikstromTeralius variant of shuffle, check out: 
+
+{{cite wikstrom2005 wikstrom2009 terelius2010 brenner2017 wikstrom2011}}
 
 
 # Vision
@@ -181,7 +182,7 @@ The project currently does have only one developer: Janis Erdmanis. You can get 
 
     Because I did not want to learn or write Java. 
 
-More serisoly speaking Julia type ssytem together with multiple dispatch makes it possible to have a lean, modular codebase which is cross platform and rarelly breaks things when Julia version is updated. For instance, ShuffleProofs.jl tests works on julia 1.0 while it was developed on julia 1.7 without any concern to backwards compatability. 
+More serisoly speaking Julia type system together with multiple dispatch makes it possible to have a lean, modular codebase which is cross platform and rarelly breaks things when Julia version is updated. For instance, ShuffleProofs.jl tests works on julia 1.0 while it was developed on julia 1.7 without any concern to backwards compatability. 
 
 Furthermore, a lot of evoting system parts are not yet rigorously specified and it may be the case that some intended uses of cryptographic primitives may not be secure. Thus ability to refactor/reorganize code is important in the current state of the development. 
 
