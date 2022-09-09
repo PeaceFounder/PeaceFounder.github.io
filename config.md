@@ -26,3 +26,51 @@ For instance:
 -->
 \newcommand{\R}{\mathbb R}
 \newcommand{\scal}[1]{\langle #1 \rangle}
+
+
+
+~~~
+<style>
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: grey;
+  font-size: 12px;
+  margin: auto;
+}
+
+.source {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  transition: opacity 1s;
+  transition-timing-function: ease-in;
+  opacity: .4;
+  color: grey;
+}
+
+
+.container img:hover + .source {
+opacity: 1;
+}
+
+.container img {
+width: 100px;
+}
+
+</style>
+~~~
+
+
+
+
+\newcommand{\figenv}[2]{
+~~~
+<figure style="text-align:center;">
+<img src="!#2" style="padding:0;" alt="#1"/>
+<figcaption>#1</figcaption>
+</figure>
+~~~
+}
+

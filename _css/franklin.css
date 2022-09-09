@@ -2,11 +2,19 @@
     DEFAULT FONT AND LAYOUT
 ================================================================== */
 
-html {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size  : 17px;
+
+body {
+    font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif; 
+    font-size  : 18px;
     color: #1c1c1c;
+    -webkit-font-smoothing: antialiased;
 }
+
+p {
+  margin: 1.5em 0;
+}
+
+
 
 /* ==================================================================
     BASIC GRID FOR PROFILE PIC
@@ -60,7 +68,9 @@ html {
     position: relative;
     padding-left: 12.5%;
     padding-right: 12.5%;
-    line-height: 1.35em; }
+    line-height: 1.5em; 
+    word-spacing: 01px;
+}
 
 /* on wide screens, fix content width to a max value */
 @media (min-width: 940px) {
@@ -81,24 +91,37 @@ html {
     TITLES
 ================================================================== */
 
-.franklin-content h1 { font-size: 24px; }
-.franklin-content h2 { font-size: 22px; }
-.franklin-content h3 { font-size: 20px; }
+.franklin-content h1 { font-size: 2.5em; }
+.franklin-content h2 { font-size: 1.75em; }
+.franklin-content h3 { font-size: 1.25em; }
 
 .franklin-content h1, h2, h3, h4, h5, h6 {
-    text-align: left; }
+    text-align: left; 
+}
 
 .franklin-content h1 {
     padding-bottom: 0.5em;
-    border-bottom: 3px double lightgrey;
+    border-bottom: 1px solid lightgrey;
     margin-top: 1.5em;
-    margin-bottom: 1em; }
+    margin-bottom: 0em; 
+    font-weight: 600;
+    color: #DC5923;
+    
+}
 
 .franklin-content h2 {
     padding-bottom: 0.3em;
-    border-bottom: 1px solid lightgrey;
     margin-top: 2em;
-    margin-bottom: 1em; }
+    margin-bottom: 1em; 
+    text-align: center;
+    font-weight: 400;
+    color: #5A5855;
+}
+
+.franklin-content h3 {
+    font-weight: 600;
+    color: #5A5855;
+}
 
 .franklin-content h1 a { color: inherit; }
 .franklin-content h1 a:hover {text-decoration: none;}
