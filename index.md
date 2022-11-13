@@ -2,9 +2,6 @@
 @def tags = ["syntax", "code"]
 
 
-**This page is under a heavy development and is published as is in a very first draft stage to provide most updated infomration about PeacFounder project. Check out later for a better reading experience.** 
-
-
 ~~~
 <style>
 /* Container holding the image and the text */
@@ -48,13 +45,13 @@ Present voting systems and voting developments seem to be on the wrong track. Th
   * Privacy is ensured through a cascade of mixes which do not need to be trusted, and one of them can be your desktop computer
   * Versatile and innovative ballots:
     * cardinal, preferential voting is possible
-    * complex ballots with a budget constrains
+    * complex ballots with budget constraints
     * statistical ballots where a large ballot is split into smaller ones and assigned verifiably random to anonymous voters reducing repetitive work and amplifying each voter's responsibility
     * ability for voters to change their votes after elections making untrusted representatives lose their seats and making them more accountable to society
   * Accessible trust for voters. Every voter can see their vote is cast as intended and counted as cast and can do vote counting and auditing elections themselves.
   * Trusted party-free design.
   * Unstoppable and defendable elections by third parties.
-  * Extendable with specialized hardware to support coercion resistance.
+  * Extendable with specialised hardware to support coercion resistance.
 
 
 
