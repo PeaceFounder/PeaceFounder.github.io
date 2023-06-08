@@ -8,7 +8,7 @@ The project currently does have only one developer: Janis Erdmanis. You can get 
 
 ### Why Julia?
 
-Many legacy software in cryptography is written in C, C++ and Java, making them an obvious choice for implementing an e-voting system. However, these languages have shown their age in the presence of innovations allowing to write code faster by providing tools for code reuse and its deployment like Rust, Go, Swift, etc, where a considerable amount of cryptographic libraries is already available. Thus Julia may seem an odd choice for such a project as an e-voting system. 
+Many legacy software in cryptography is written in C, C++ and Java, making them an obvious choice for implementing an e-voting system. However, these languages have shown their age in the presence of innovations in code reuse and its deployment like Rust, Go, Swift, Julia etc. However, Julia may seem least desirable as it lacks considerable amount of cryptographic libraries such as CryptoGroups.jl, CryptoSignatiures.jl and HistoryTrees.jl which would be already been available in Rust and Go from a start.
 
 The reason for choosing Julia can partly be attributed to my familiarity with the language. As a PhD student, I spent the ins and outs of effective Julia codebase management and got addicted to the multiple dispatch and corresponding type system. Objectively speaking, Julia offers everything that a modern language like Rust, Go, and Swift could offer in terms of development speed and deployment of code. But in addition, it does offer great opportunities to experiment with the ability to use a type system for making code more modular, with multiple dispatch and Unicode allowing to make code as lean as possible, closely resembling pseudocodes in the papers. And the worry-free compatibility between platforms and Julia versions is a great plus. For instance, ShuffleProofs.jl was developed using Julia 1.7 as a testing platform; however, with no changes, it works with no issues, also on Julia 1.0, now a 4-year-old version. 
 
@@ -169,10 +169,9 @@ The colours green, yellow, and red are relative measures of how well a correspon
 
 ### How does the PeaceFounder system protect against vote selling and coercion? 
 
-Coercion resistance can be implemented by allowing voters to revote and keep it a secret that they have done so. When counting the votes, those who have devoted their public votes can be subtracted at the pooling station, which has accepted a vote. It's also possible to do this remotely and add different cross-accountability mechanisms, but now that is out of the scope of the PeaceFounder project. Also, to do that properly, one would need to add hardware so that coercers could not extract voters secret keys. 
+Coercion resistance can be implemented by allowing voters to revote and keep it a secret that they have done so. When counting the votes, those who have voted at the pooling station can be substracted by the ellection authorithy from a public ledger. It's also possible to do this remotely and add different cross-accountability mechanisms, but now that is out of the scope of the PeaceFounder project. Also, to do that properly, one would need to add hardware so that coercers could not extract voters secret keys. 
 
 An alternative way to look at coercion resistance is through a way an individual could protect his/her voters privacy. The ability to whistleblow anonymously in case one offers to buy a vote or has heard about that from a friend could enable easier investigation. Sharding of long ballots can prevent the briber from reaching the key voters who decide on a sensitive question. Also, voting more often could make life more inconvenient for coercers, and bribers as a single ballot would have less stake in it. 
-
 
 
 
