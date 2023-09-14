@@ -1,38 +1,5 @@
 @def title = "Strategy"
 
-~~~
-<style>
-/* Container holding the image and the text */
-.container {
-  position: relative;
-  text-align: center;
-  color: grey;
-  font-size: 12px;
-  margin: auto;
-}
-
-.source {
-  position: absolute;
-  bottom: 8px;
-  right: 16px;
-  transition: opacity 1s;
-  transition-timing-function: ease-in;
-  opacity: .4;
-  color: grey;
-}
-
-
-.container img:hover + .source {
-opacity: 1;
-}
-
-.container img {
-width: 100px;
-}
-
-</style>
-~~~
-
 # Strategy
 ## Core values for democratic voting
 
@@ -73,8 +40,6 @@ Perfect security is worthless for trustworthiness without transparency. In democ
 It is exciting to look into how a lack of security or too much transparency could violate the anonymity aspect of privacy. In the early days of the secret ballot, multiple ways of vote selling strategies were devised to keep voters accountable to their bribers in a blend with the help of insiders, violations of protocol or exploiting its weaknesses. For example, we would find it unacceptable to have a camera in the voting booth (unless you are part of the population who like to take selfies with their ballots that you sholdn't). So there must be good security in place, which we shall define as:
 
 **Security: procedures which enforce desired behaviour of agents and machines**
-
-
 
 This definition purposefully takes out the entity whom it protects. For instance, in computerised elections, the desired behaviour can be enforced with software independence which produces evidence that no malware on the computer could have manipulated the result. The catch, though, is who can access the proof of it to be audited, and this is where transparency comes into play which we shall define:
 

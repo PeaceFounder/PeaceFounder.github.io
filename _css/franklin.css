@@ -8,13 +8,17 @@ body {
     font-size  : 18px;
     color: #1c1c1c;
     -webkit-font-smoothing: antialiased;
+    max-width: 50rem;
+    margin: 0 auto;
 }
 
 p {
   margin: 1.5em 0;
 }
 
-
+strong {
+    font-weight: 600;
+}
 
 /* ==================================================================
     BASIC GRID FOR PROFILE PIC
@@ -66,8 +70,8 @@ p {
 
 .franklin-content {
     position: relative;
-    padding-left: 12.5%;
-    padding-right: 12.5%;
+    /* padding-left: 12.5%; */
+    /* padding-right: 12.5%; */
     line-height: 1.5em; 
     word-spacing: 01px;
 }
@@ -75,7 +79,8 @@ p {
 /* on wide screens, fix content width to a max value */
 @media (min-width: 940px) {
     .franklin-content {
-        width: 705px;
+        /* width: 705px; */
+        width: 100%;
         margin-left: auto;
         margin-right: auto; }
     }
@@ -278,3 +283,39 @@ code {
     margin-bottom: 5px;
     border-radius: 0 10px 10px 0;
     border-left: 5px solid #4C9CF1; }
+
+
+/* ============================================ */
+
+
+iframe {
+   display: block;
+   margin: 0 auto;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: grey;
+  font-size: 12px;
+  margin: auto;
+}
+
+.source {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  transition: opacity 1s;
+  transition-timing-function: ease-in;
+  opacity: .4;
+  color: grey;
+}
+
+
+.container img:hover + .source {
+opacity: 1;
+}
+
+.container img {
+width: 100px;
+}

@@ -2,17 +2,17 @@
 
 # FAQ
 
-### How to get in touch?
+### How do I get in touch?
 
-The project currently does have only one developer: Janis Erdmanis. You can get in touch with me at janiserdmanis@protonmail.ch I will be happy to chat about whatever may be related to this project. 
+The project currently has only one developer: Janis Erdmanis. You can get in touch with me at janiserdmanis@protonmail.ch. I will be happy to chat about whatever may be related to this project. 
 
 ### Why Julia?
 
-Many legacy software in cryptography is written in C, C++ and Java, making them an obvious choice for implementing an e-voting system. However, these languages have shown their age in the presence of innovations in code reuse and its deployment like Rust, Go, Swift, Julia etc. However, Julia may seem least desirable as it lacks considerable amount of cryptographic libraries such as CryptoGroups.jl, CryptoSignatiures.jl and HistoryTrees.jl which would be already been available in Rust and Go from a start.
+Many legacy software in cryptography is written in C, C++ and Java, making them an obvious choice for implementing an e-voting system. However, these languages have shown their age in the presence of innovations in code reuse and its deployment, like Rust, Go, Swift, Julia, etc. However, Julia may seem least desirable as it lacks a considerable amount of cryptographic libraries such as CryptoGroups.jl, CryptoSignatiures.jl and HistoryTrees.jl, which would be already been available in Rust and Go from the start.
 
 The reason for choosing Julia can partly be attributed to my familiarity with the language. As a PhD student, I spent the ins and outs of effective Julia codebase management and got addicted to the multiple dispatch and corresponding type system. Objectively speaking, Julia offers everything that a modern language like Rust, Go, and Swift could offer in terms of development speed and deployment of code. But in addition, it does offer great opportunities to experiment with the ability to use a type system for making code more modular, with multiple dispatch and Unicode allowing to make code as lean as possible, closely resembling pseudocodes in the papers. And the worry-free compatibility between platforms and Julia versions is a great plus. For instance, ShuffleProofs.jl was developed using Julia 1.7 as a testing platform; however, with no changes, it works with no issues, also on Julia 1.0, now a 4-year-old version. 
 
-In future, though its dynamism of Julia may become less attractive when the protocol is stabilised, targeting mobile will become relevant. However, that is far years ahead until such a problem would rise, and development within the Julia community, in a sense, is pushing in that direction with StaticCompiler.jl and BinaryBuilder.jl. Thus in the meantime, let’s have fun :) 
+In future, though its dynamism of Julia may become less attractive when the protocol is stabilised, targeting mobile will become relevant. However, that is far years ahead until such a problem arises, and development within the Julia community, in a sense, is pushing in that direction with StaticCompiler.jl and BinaryBuilder.jl. Thus, in the meantime, let’s have fun :) 
 
 ### How does PeaceFounder compare with XYZ?
 
@@ -70,8 +70,8 @@ A typical re-encryption voting system makes conclusive evidence for election int
 
   <tr>
     <td>Vote</td>
-    <td colspan="2">ElGamal encrypted, signed non-anonymously</td>
-    <td>Plaintext, signed with a pseudonym</td>
+    <td colspan="2" class="ok">ElGamal encrypted, signed non-anonymously</td>
+    <td class="ok">Plaintext, signed with a pseudonym</td>
   </tr>
 
   <tr>
@@ -137,7 +137,7 @@ A typical re-encryption voting system makes conclusive evidence for election int
     <td>Coercion resistance</td>
     <td class="ok">Possible to revote secretly at the pooling station</td>
     <td class="poor">Coercer sees in the public evidence if the vote has been counted</td>
-    <td class="ok">Possible to revote secretly at the pooling station</td>
+    <td class="fair">Revoting possible before the votes are published on the buletin board</td>
   </tr>
     
   <tr>
@@ -169,13 +169,11 @@ The colours green, yellow, and red are relative measures of how well a correspon
 
 ### How does the PeaceFounder system protect against vote selling and coercion? 
 
-Coercion resistance can be implemented by allowing voters to revote and keep it a secret that they have done so. When counting the votes, those who have voted at the pooling station can be substracted by the ellection authorithy from a public ledger. It's also possible to do this remotely and add different cross-accountability mechanisms, but now that is out of the scope of the PeaceFounder project. Also, to do that properly, one would need to add hardware so that coercers could not extract voters secret keys. 
+A significant risk to the PeaceFounder system is for a briber to ask members to forward their votes through a proxy channel they control. To counter this threat, the bulletin board hides the actual votes, showing only their hashes, and gives voters an option to revote, ensuring both receipt freeness and vote fairness. A sequence number along the vote ensures that only the latest cast vote on the device matters. 
 
-An alternative way to look at coercion resistance is through a way an individual could protect his/her voters privacy. The ability to whistleblow anonymously in case one offers to buy a vote or has heard about that from a friend could enable easier investigation. Sharding of long ballots can prevent the briber from reaching the key voters who decide on a sensitive question. Also, voting more often could make life more inconvenient for coercers, and bribers as a single ballot would have less stake in it. 
+This method undermines the confidence of vote buyers and coercers, as it prevents them from ensuring that the votes they've acquired will be counted in the final tally. As a consequence, they can only return bribes after votes are published on the bulletin board. (During the vote, only receipt hashes are published on the bulletin board. This serves to both commit the votes while maintaining fairness and receipt-freeness.) This arrangement erodes the credibility of bribers and coercers, making it less likely for voters to engage with them in such transactions due to the lack of a guaranteed positive/negative outcome.
 
-
-
-
+A secondary concern is the potential for a coercer to ask an individual to show how they had voted on their device. To address this, only a receipt is shown. However, this receipt can be linked to the specific vote on the bulletin board. If coercion becomes a significant threat, the receipt can be visible only briefly, such as 30 minutes after casting a vote. During this window, members can manually record their details in a logbook. While this approach may reduce user-friendliness, it still serves as a robust deterrent against malware.
 
 
 
