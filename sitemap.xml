@@ -3,25 +3,43 @@
 
 <url>
     <loc>https://peacefounder.org/faq/index.html</loc>
-    <lastmod>2023-06-09</lastmod>
+    <lastmod>2023-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://peacefounder.org/impact/index.html</loc>
+    <lastmod>2023-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://peacefounder.org/roadmap/index.html</loc>
-    <lastmod>2023-06-09</lastmod>
+    <lastmod>2023-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://peacefounder.org/solution/index.html</loc>
+    <lastmod>2023-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://peacefounder.org/challenge/index.html</loc>
+    <lastmod>2023-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://peacefounder.org/index.html</loc>
-    <lastmod>2023-06-09</lastmod>
+    <lastmod>2023-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://peacefounder.org/strategy/index.html</loc>
-    <lastmod>2023-06-09</lastmod>
+    <lastmod>2023-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
