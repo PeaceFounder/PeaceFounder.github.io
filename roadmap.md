@@ -4,14 +4,14 @@
 
 The PeaceFounder e-voting system is meticulously designed with both the voter and election authority in mind. Intuitive voting experience while ensuring seamless deployment and maintenance is a priority. Balancing a user-centric design with the highest standards of security, transparency, and privacy is a commitment of the PeaceFounder project, even when these goals are in tension with each other. Every detail reflects our dedication to excellence, a journey thus far curated by a singular, dedicated vision.
 
-In April 2023, a milestone was reached where all cryptographic elements were integrated, paving the way for a unified voting system. Experience PeaceFounder's user-friendly GUI client, crafted in QML, through the most common use scenario. Dive into the future of voting by watching the video below:
+In April 2023, a milestone was reached where all cryptographic elements were integrated, paving the way for a unified voting system. Experience PeaceFounder's user-friendly GUI client, crafted in QML, through the most common use scenario by watching the video below:
 
 
 ~~~
 <iframe width="560" height="315" src="https://www.youtube.com/embed/L7M0FG50ulU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 ~~~
 
-The demonstration video captures the project's potential, emphasising its early-stage nature. We're keenly aware of the improvements required to revolutionise the e-voting landscape. Firstly, our primary goal is to streamline the interface for the guardians, ensuring their role is more intuitive. Furthermore, we're in the process of developing an advanced infrastructure for external braiding. A secondary channel as a static bulletin facade website is in plans, enabling them to verify their votes, assuring that they've been cast as intended.
+The demonstration video captures the project's potential, emphasising its early-stage nature. We're keenly aware of the improvements required to revolutionise the e-voting landscape. Firstly, our primary goal is to streamline the interface for the guardian, ensuring their workflow is more intuitive. Furthermore, we're in the process of developing infrastructure for external braiding. Then, improving workflow for auditors and developing a static bulletin board facade website is also in the plans, enabling voters to verify their votes, assuring that they've been cast as intended.
 
 Looking ahead, mobile phones have become indispensable for daily tasks; we aspire to make the voting system readily accessible on these devices. A significant step in this direction is transitioning the client backend to Rust. Not only would Rust offer complete compilation, but its compatibility with the Arti library (which wraps TOR) is crucial for offering intractability for the voters. This move is especially pertinent given the uncertainty surrounding Julia's adaptability for mobile app integrations in the foreseeable future.
 
