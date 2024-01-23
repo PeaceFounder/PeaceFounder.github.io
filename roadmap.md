@@ -4,14 +4,14 @@
 
 The PeaceFounder e-voting system is meticulously designed with both the voter and election authority in mind. Intuitive voting experience while ensuring seamless deployment and maintenance is a priority. Balancing a user-centric design with the highest standards of security, transparency, and privacy is a commitment of the PeaceFounder project, even when these goals are in tension with each other. Every detail reflects our dedication to excellence, a journey thus far curated by a singular, dedicated vision.
 
-In April 2023, a milestone was reached where all cryptographic elements were integrated, paving the way for a unified voting system. Experience PeaceFounder's user-friendly GUI client, crafted in QML, through the most common use scenario by watching the video below:
+In April 2023, a milestone was reached where all cryptographic elements were integrated, paving the way for a unified voting system, which can be checked out in [a 10-minute demo](https://www.youtube.com/embed/L7M0FG50ulU). Since then, significant progress has been made by bundling client GUI clients, improving the installation experience and creating an admin panel, making the system much more accessible to a wider audience:
 
 
 ~~~
-<iframe width="560" height="315" src="https://www.youtube.com/embed/L7M0FG50ulU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=3asNuNMlHhY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 ~~~
 
-The demonstration video captures the project's potential, emphasising its early-stage nature. We're keenly aware of the improvements required to revolutionise the e-voting landscape. Firstly, our primary goal is to streamline the interface for the guardian, ensuring their workflow is more intuitive. Furthermore, we're in the process of developing infrastructure for external braiding. Next on our agenda is enhancing the workflow for auditors. Additionally, we're planning to add a static bulletin board facade website, enabling voters to verify that their votes have been cast as intended.
+The demonstration video captures the project's potential, emphasising its early-stage nature. It already shows a streamlined and intuitive workflow for the guardian. Now, the next step is going to be a focus on audibility and transparency where braid chain and bulletin board records can be serialised in a disk and verified with a common interface and streamlining record distribution, in particular to a GitHub repository which is also going to serve as bulletin board accessible to voters themselves where voters can also verify that their votes to have been cast as intended. 
 
 Looking ahead, mobile phones have become indispensable for daily tasks; we aspire to make the voting system readily accessible on these devices. A significant step in this direction is transitioning the client backend to Rust. Not only would Rust offer complete compilation, but its compatibility with the Arti library (which wraps TOR) is crucial for offering intractability for the voters. This move is especially pertinent given the uncertainty surrounding Julia's adaptability for mobile app integrations in the foreseeable future.
 
@@ -19,21 +19,25 @@ Here are the key milestones we're gearing up to address, beginning with the imme
 
 **1. Making the PeaceFounder Ready for Early Adopters**
 
-- **Administrator GUI Interface**: Intuitive control panel for publishing proposals, inviting new members via email and initiating braiding.
-- **Client Installation**: Make client bundles for macOS, Linux, and Windows.
+- **[DONE] Administrator GUI Interface**: Intuitive control panel for publishing proposals, inviting new members via email and initiating braiding.
+- **[DONE] Client Installation**: Make client bundles for macOS, Linux, and Windows.
 - **Server & Client Error Handling**: Robust error and assertion handling in both PeaceFounder server and client, with client errors clearly displayed for users. Features blame forwarding to auditors for accountability.
 - **Data Persistence**: Client and server data storage.
+- **Membership Termination:**  Membership termination is essential in various scenarios for long-standing demes. This is challenging to do as the link between pseudonyms and identity is secret; therefore, braiding needs to be reset from the original generator while maintaining practicality with a pinch of trust. [issue #18](https://github.com/PeaceFounder/PeaceFounder.jl/issues/18) 
 
-**2. Integration of External Braiding Services**
+**2. Auditing & Accountability Features**
+
+- **Evidence Auditing with Terminal API:** Create a CLI application that allows any party to audit and reproduce the announced tally independently. [issue #19](https://github.com/PeaceFounder/PeaceFounder.jl/issues/19)
+- **Bulletin Board Facade**: Develop a bulletin board facade as a static website where voters can easily confirm their votes have been recorded as intended in the ballot box. [issue #22](https://github.com/PeaceFounder/PeaceFounder.jl/issues/22), [issue #21](https://github.com/PeaceFounder/PeaceFounder.jl/issues/21)
+- **Vote Proxy Feature**: Simplify the process for users to set up a proxy, ensuring vote accountability.
+- **Vote Selection Encryption:** Encryption of vote selection could provide another measure to protect the fairness of the election result, enable vote tagging as coerced and ensure imparity when votes are collected by a third party for forwarding. [issue #16](https://github.com/PeaceFounder/PeaceFounder.jl/issues/16)
+- **Sampled Electoral Roll Audits:** Auditing a selective sample of the electoral roll can balance election integrity with the risk of data leaks, ensuring reliability and broadening independent oversight. [issue #17](https://github.com/PeaceFounder/PeaceFounder.jl/issues/17)
+
+**3. Integration of External Braiding Services**
 
 - **Deme Anonymisation**: Demes can run braiding by establishing direct connections with other demes.
 - **Braiding Broker**: An automatic braiding from a curated list of demes managed by PeaceFounder. This feature will be the primary monetisation avenue in the later stages.
 - **Braiding Protocol Finalization**: Establish and finalise the underlying braiding protocol to ensure seamless integration and functionality.
-
-**3. Auditing & Accountability Enhancements**
-
-- **Vote Proxy Feature**: Simplify the process for users to set up a proxy, ensuring vote accountability.
-- **Vote Validation**: Develop a bulletin board facade as a static website where voters can easily confirm their votes have been recorded as intended in the ballot box. 
 
 **4. Mobile Client Development**
 
