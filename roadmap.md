@@ -8,7 +8,7 @@ In April 2023, a milestone was reached where all cryptographic elements were int
 
 
 ~~~
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=3asNuNMlHhY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3asNuNMlHhY?si=xFw0NHC3E92FA3W1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 ~~~
 
 The demonstration video captures the project's potential, emphasising its early-stage nature. It already shows a streamlined and intuitive workflow for the guardian. Now, the next step is going to be a focus on audibility and transparency where braid chain and bulletin board records can be serialised in a disk and verified with a common interface and streamlining record distribution, in particular to a GitHub repository which is also going to serve as bulletin board accessible to voters themselves where voters can also verify that their votes to have been cast as intended. 
