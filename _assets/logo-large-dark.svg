@@ -5,9 +5,9 @@
    width="144.6998mm"
    height="38.295631mm"
    version="1.1"
-   viewBox="0 0 144.6998 38.295632"
+   viewBox="7 0 137.7 36.443095"
    id="svg455"
-   sodipodi:docname="logo-large.svg"
+   sodipodi:docname="logo-large-dark.svg"
    inkscape:version="1.2.1 (9c6d41e, 2022-07-14)"
    inkscape:export-filename="logo-large.png"
    inkscape:export-xdpi="219.77"
@@ -28,19 +28,19 @@
      inkscape:document-units="mm"
      showgrid="false"
      showguides="false"
-     inkscape:zoom="1.0299318"
-     inkscape:cx="287.39767"
-     inkscape:cy="239.8217"
+     inkscape:zoom="1.0503809"
+     inkscape:cx="262.76182"
+     inkscape:cy="-45.697707"
      inkscape:window-width="1464"
      inkscape:window-height="916"
      inkscape:window-x="48"
      inkscape:window-y="136"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g105633-5" />
+     inkscape:current-layer="text1154-5-3-8-2-4-0-0-1-9-2-0-4-7-0-1-6-9-6" />
   <defs
      id="defs459" />
   <g
-     transform="translate(34.279524,-53.415974)"
+     transform="translate(34.207981,-53.422449)"
      id="g453">
     <g
        transform="matrix(0.35278,0,0,-0.35278,-235.87,273.02)"
@@ -107,7 +107,7 @@
            transform="matrix(0.20210581,0,0,0.20210581,24.192249,-3215.9783)">
           <g
              id="surface80-0-4-7-9-60-2-12-7-9-97-63"
-             transform="matrix(0,-1.6306132,1.6306132,0,2716.3287,13189.795)"
+             transform="matrix(0,-1.6306132,1.6306132,0,2763.2705,12093.063)"
              style="fill:#525252;fill-opacity:1;stroke:#ffffff;stroke-width:9.19899;stroke-dasharray:none;stroke-opacity:1">
             <g
                id="g58214-8-3-4-9-9-1-7-2-5-35-2"
@@ -142,7 +142,8 @@
           <g
              aria-label="PeaceFounder"
              id="text1154-5-3-8-2-4-0-0-1-9-2-0-4-7-0-1-6-9"
-             style="font-weight:500;font-size:250.515px;font-family:Asap;-inkscape-font-specification:'Asap, Medium';text-align:center;text-anchor:middle;opacity:0.904977;fill:#313131;stroke-width:5.07226;stroke-dasharray:5.07226, 5.07226;fill-opacity:1">
+             style="font-weight:500;font-size:250.515px;font-family:Asap;-inkscape-font-specification:'Asap, Medium';text-align:center;text-anchor:middle;opacity:0.904977;fill:#313131;fill-opacity:1;stroke-width:5.07226;stroke-dasharray:5.07226, 5.07226"
+             transform="translate(46.941831,-1096.7319)">
             <path
                d="m 3138.1532,12996.39 h -52.1072 c -6.2628,0 -9.0185,2.755 -9.0185,9.018 v 159.829 c 0,4.509 4.0082,7.014 13.2773,7.014 h 6.0124 c 9.269,0 13.2773,-2.505 13.2773,-7.014 v -62.379 h 31.0638 c 13.2773,0 55.6143,-6.262 55.6143,-53.61 0,-46.345 -36.0741,-52.858 -58.1194,-52.858 z m -1.5031,27.807 c 11.5237,0 26.3041,4.509 26.3041,25.051 0,21.294 -15.2815,25.553 -25.0515,25.553 h -28.3082 v -50.604 z"
                id="path1673"
@@ -192,17 +193,9 @@
                id="path1695"
                style="fill:#313131;fill-opacity:1" />
           </g>
-          <rect
-             style="font-size:54.739px;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#313131;fill-opacity:1;fill-rule:nonzero;stroke:#313131;stroke-width:26.5969;stroke-dasharray:none;stroke-opacity:1"
-             id="rect99782-9-9-7"
-             width="2002.885"
-             height="510.51712"
-             x="2776.3647"
-             y="13874.144"
-             ry="0.021052618" />
           <g
              id="surface80-0-4-7-9-60-2-12-7-9-97-63-7"
-             transform="matrix(0,-1.6306132,1.6306132,0,2771.696,14218.339)"
+             transform="matrix(0,-1.6306132,1.6306132,0,2717.3324,13189.886)"
              style="font-size:54.739px;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#e3dbde;fill-opacity:1;stroke:#313131;stroke-width:9.19899;stroke-dasharray:none;stroke-opacity:1">
             <g
                id="g58214-8-3-4-9-9-1-7-2-5-35-2-3"
@@ -238,7 +231,7 @@
              aria-label="PeaceFounder"
              id="text1154-5-3-8-2-4-0-0-1-9-2-0-4-7-0-1-6-9-6"
              style="font-weight:500;font-size:250.515px;line-height:125%;font-family:Asap;-inkscape-font-specification:'Asap, Medium';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;opacity:0.904977;fill:#e3dbde;stroke-width:5.07226;stroke-dasharray:5.07226, 5.07226"
-             transform="translate(55.367281,1028.5439)">
+             transform="translate(1.0036417,0.09105363)">
             <path
                d="m 3138.1532,12996.39 h -52.1072 c -6.2628,0 -9.0185,2.755 -9.0185,9.018 v 159.829 c 0,4.509 4.0082,7.014 13.2773,7.014 h 6.0124 c 9.269,0 13.2773,-2.505 13.2773,-7.014 v -62.379 h 31.0638 c 13.2773,0 55.6143,-6.262 55.6143,-53.61 0,-46.345 -36.0741,-52.858 -58.1194,-52.858 z m -1.5031,27.807 c 11.5237,0 26.3041,4.509 26.3041,25.051 0,21.294 -15.2815,25.553 -25.0515,25.553 h -28.3082 v -50.604 z"
                id="path1673-0" />
@@ -280,7 +273,7 @@
              aria-label="evoting for democracy"
              id="text1154-5-3-8-2-0-4-3-2-5-0-5-5-7-4-2-7"
              style="font-weight:500;font-size:16.5276px;line-height:125%;font-family:Asap;-inkscape-font-specification:'Asap, Medium';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;opacity:0.904977;fill:#d3ccce;stroke-width:0.899854;stroke-dasharray:0.899854, 0.899854"
-             transform="matrix(4.9479032,0,0,4.9479032,-64.333645,16940.894)">
+             transform="matrix(4.9479032,0,0,4.9479032,-118.69729,15912.441)">
             <path
                d="m 716.01382,-544.26335 c -2.41303,0 -3.9501,1.35526 -3.9501,4.49551 0,2.77663 1.32221,4.37981 4.21454,4.37981 1.20652,0 2.97497,-0.46277 2.97497,-1.1404 0,-0.28097 -0.44625,-1.09083 -0.76027,-1.09083 -0.19833,0 -0.9586,0.57847 -2.14859,0.57847 -1.27262,0 -2.01637,-0.56194 -2.13206,-2.08248 h 4.57815 c 0.21485,0 0.74374,-0.61152 0.74374,-0.85943 0,-2.47914 -1.04124,-4.28065 -3.52038,-4.28065 z m -0.0165,1.65276 c 1.00818,0 1.48749,0.7768 1.48749,2.01637 h -3.27247 c 0.16528,-1.4379 0.82638,-2.01637 1.78498,-2.01637 z"
                id="path1698-1" />
@@ -343,7 +336,8 @@
         <g
            aria-label="evoting for democracy"
            id="text1154-5-3-8-2-0-4-3-2-5-0-5-5-7-4-2"
-           style="font-weight:500;font-size:16.5276px;font-family:Asap;-inkscape-font-specification:'Asap, Medium';text-align:center;text-anchor:middle;opacity:0.904977;fill:#313131;stroke-width:0.899854;stroke-dasharray:0.899854, 0.899854;fill-opacity:1">
+           style="font-weight:500;font-size:16.5276px;font-family:Asap;-inkscape-font-specification:'Asap, Medium';text-align:center;text-anchor:middle;opacity:0.904977;fill:#313131;fill-opacity:1;stroke-width:0.899854;stroke-dasharray:0.899854, 0.899854"
+           transform="translate(9.4872168,-221.65588)">
           <path
              d="m 716.01382,-544.26335 c -2.41303,0 -3.9501,1.35526 -3.9501,4.49551 0,2.77663 1.32221,4.37981 4.21454,4.37981 1.20652,0 2.97497,-0.46277 2.97497,-1.1404 0,-0.28097 -0.44625,-1.09083 -0.76027,-1.09083 -0.19833,0 -0.9586,0.57847 -2.14859,0.57847 -1.27262,0 -2.01637,-0.56194 -2.13206,-2.08248 h 4.57815 c 0.21485,0 0.74374,-0.61152 0.74374,-0.85943 0,-2.47914 -1.04124,-4.28065 -3.52038,-4.28065 z m -0.0165,1.65276 c 1.00818,0 1.48749,0.7768 1.48749,2.01637 h -3.27247 c 0.16528,-1.4379 0.82638,-2.01637 1.78498,-2.01637 z"
              id="path1698"

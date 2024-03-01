@@ -10,6 +10,8 @@ body {
     -webkit-font-smoothing: antialiased;
     max-width: 50rem;
     margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 p {
@@ -82,15 +84,18 @@ strong {
         /* width: 705px; */
         width: 100%;
         margin-left: auto;
-        margin-right: auto; }
+        margin-right: auto; 
+        /* padding-left: 20px; */
+        /* padding-right: 20px; */
+    }
     }
 
-/* on narrow device, reduce margins */
-@media (max-width: 480px) {
-    .franklin-content {
-        padding-left: 6%;
-        padding-right: 6%; }
-    }
+/* /\* on narrow device, reduce margins *\/ */
+/* @media (max-width: 480px) { */
+/*     .franklin-content { */
+/*         padding-left: 6%; */
+/*         padding-right: 6%; } */
+/*     } */
 
 /* ==================================================================
     TITLES
