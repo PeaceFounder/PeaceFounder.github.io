@@ -1,5 +1,31 @@
-<div class="page-foot">
-  <div class="copyright">
-    &copy; {{ fill author }}. {{isnotpage /tag/*}}Last modified: {{ fill fd_mtime }}.{{end}} Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
-  </div>
-</div>
+  {{if notmain}}
+        </div>
+    </section>
+  {{end}}
+
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-links">
+                <a href="/">About</a>
+                <a href="/solution">Research</a>
+                <a href="/downloads/#research_development_roadmap">Roadmap</a>
+                <a href="https://peacefounder.org/PeaceFounder.jl/dev/">Documentation</a>
+                <a href="https://github.com/PeaceFounder">GitHub</a>
+                <!-- <a href="#blog">Blog</a> -->
+            </div>
+            <p>&copy; 2025 PeaceFounder. Open source under Apache 2.0 license.</p>
+            <p style="margin-top: 1rem; opacity: 0.7;">
+                Contact: <a href="mailto:janis@peacefounder.org" style="color: #e0dcdd;">janis@peacefounder.org</a>
+            </p>
+        </div>
+    </footer>
+
+
+
+
+<!-- <div class="page-foot"> -->
+<!--     <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> {{ fill author }}. {{isnotpage /tag/*}}Last modified: {{ fill fd_mtime }}.{{end}} -->
+<!--     Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>. -->
+<!-- </div> -->

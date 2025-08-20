@@ -1,84 +1,187 @@
-@def title = "Solution"
+@def title = "PeaceFounder - EVoting Problem Analysis"
+@def tags = ["syntax", "code", "text"]
 
-# Solution
+# The PeaceFounder Solution
+*Unconditional individual verifiability with receipt freeness via post-cast isolation*
 
 ~~~
-<div class="container" style="padding-top: 50px;">
-<img src="../assets/knot.png" alt="" style="width: 100%;"/>
-<div class="source" style="color: grey;">CC: Jānis Erdmanis</div>
+<div class="image-hero">
+  <img src="/assets/vision.png" alt="PeaceFounder Cryptographic Knot" />
+  <div class="img-source">CC: Jānis Erdmanis</div>
 </div>
 ~~~
 
-The core primitive for the PeaceFounder e-voting system revolves around the ability to generate digital signatures using a single private key for distinct generators, all while maintaining the security of the key. The signatures in such cases are supplemented with a corresponding public key for a relative generator at which the signature is issued. A relationship between these public keys can be established by showing an exponent connecting the relative generators or forming zero-knowledge proof demonstrating the equality of discrete logarithms. 
+## The Core Innovation
 
-The concept of unlinkability can be harnessed to create an interconnected structure using multiple private keys resembling a knot. In this structure, input **pseudonyms**—public keys derived by exponentiating input relative generator with private keys—are bound to output pseudonyms. To achieve this, a dealer exponentiates a relative generator and pseudonyms with the same secret exponent and then shuffles the resulting output pseudonym list. We shall refer to this procedure as **braiding** to distinguish that from mixing objectives where input retains the original form after going through a mix cascade. 
+PeaceFounder introduces a revolutionary approach to remote electronic voting that solves the fundamental tension between verifiability and privacy. At its heart lies a **trapdoorless tracker construction** that derives security from information flow control rather than cryptographic secrets, enabling voters to independently verify their votes without trusting any authorities or vendors.
 
-To ensure integrity in resulting braids, in particular, that braider had not replaced output pseudonyms with its own, zero-knowledge proofs can be used. This can be done by reformulating exponentiation as ElGamal re-encryption shuffle and consequent decryption as recently proposed in a novel e-voting system design. The zero-knowledge proof of shuffle has been successfully made widely available for ElGamal re-encryption mixnets with Verificatum, which offers proof with relatively standard cryptographic assumptions on the difficulty of computing discrete logarithms and a decisional Diffie Hellman assumption. Combined with zero knowledge proof of correct decryption, a braid proof can be formed, proving to everyone that computations are performed honestly without revealing braider's secret exponentiation factor, which can be safely forgotten afterwards. The resulting braid primitive is available in the *ShuffleProofs.jl* package, which also reimplements a Verificatum-compatible proof of shuffle in Julia. 
-
-The braid primitive enables anonymisation to be transactional with one braider at a time, thus eliminating the need for complex coordination of parties as it is typical for many re-encryption mixnet or homomorphic-based e-voting systems. In addition, it's also possible to publish this evidence on a bulletin board for everyone to verify without compromising participation privacy.
 
 ~~~
-<div class="container">
-<img src="../assets/model-dependencies.svg" alt="" style="width: 75%;"/>
-<div class="source" style="color: grey;">CC: Jānis Erdmanis</div>
+<div class="isolation-detail">
+  <h3>What You Need to Trust (And What You Don't)</h3>
+  
+  <div class="trust-grid">
+    <div class="trust-item no-trust">
+      <h4>✓ Individual Verifiability - No Trust Required</h4>
+      <p>Your voting calculator can be completely corrupted, and you'll still detect if your vote was manipulated. The isolation prevents corrupt calculators from showing you other voters' trackers, and any fake tracker will fail when you look it up on the tally board.</p>
+    </div>
+    
+    <div class="trust-item limited-trust">
+      <h4>⚠ Receipt-Freeness - Limited Trust Required</h4>
+      <p>Only if you need protection from coercion does the voting calculator need to be tamper-resistant. This prevents coercers from extracting your real tracker or detecting whether you've set up a fake one.</p>
+    </div>
+  </div>
 </div>
 ~~~
 
-Member's client devices actively monitor the bulletin board, ensuring the immutability of records by tracking bulletin board commits. This method of oversight is scalable, as members only request a history tree consistency proofs, eliminating the need to replicate the actual bulletin board records. These proofs guarantee the protection of their votes and others, assuring that modifications to records are prevented when fresh entries are appended to the bulletin board. This streamlined approach enables prompt identification of bulletin board dishonesty, whether through removing or altering records or the malicious creation of a counterfeit ledger to exclude undesirable votes from the official tally.
+For anonymity, the system relies on generating digital signatures using a single private key for braided generators delivered to the voting device along with voting options once casting begins. As multiple independent parties participate in braiding before the voting phase starts, this enables computational hiding of the link between voters' identities and the pseudonyms with which votes are signed. This allows everyone to verify vote eligibility via zero-knowledge proofs while keeping voters private—much like verifying that a knot tied on multiple threads preserves input and output threads while preventing anyone from following them through.
 
-The auditor can avoid a formal association to verify the integrity of a resulting tally, as all relevant data is on the public bulletin board (except for the registration roll). This autonomy allows members the freedom to select their trusted auditors. If there are unresolved disputes with the bulletin board, members can even take on the auditor role and, if necessary, seek to replace the bulletin board authority. The system's transparency further allows auditors to cross-check each other's findings, promoting accuracy and preventing the spread of false claims.
+The PeaceFounder system also resolves bulletin board deployment ingeniously. While existing systems rely on monitors that replicate the bulletin board to ensure votes are not selectively discarded during voting, PeaceFounder uses history trees that every voter's device employs with consistency proof chains to ensure bulletin board integrity without replication. This, combined with a ceremonyless anonymization procedure, enables fully centralized deployment with clearly defined responsibilities for the election authority, making it much easier to maintain accountability while preserving voters' privacy.
+
+
+## How It Works: Four Phases
+
+
+### Phase 1: Setup - Pseudonym Anonymization
 
 ~~~
-<div class="container">
-<img src="../assets/receipt-freeness.svg" alt="" style="width: 75%;"/>
-<div class="source" style="color: grey;">CC: Jānis Erdmanis</div>
+<div class="image-hero" style="margin: 3rem 0;">
+  <img src="/assets/braid.png" alt="Braiding" style="max-width: 75%;" />
+  <div class="img-source">CC: Jānis Erdmanis</div>
 </div>
 ~~~
 
-Another essential component for safeguarding democratic elections is the prevention of coercion and vote buying. A significant risk to the PeaceFounder system is for a briber to ask members to forward their votes through a proxy channel they control. To counter this threat, the bulletin board hides the actual votes, showing only their hashes, and gives voters an option to revote, ensuring both receipt freeness and vote fairness. A sequence number along the vote ensures that only the latest cast vote on the device matters. This method undermines the confidence of vote buyers and coercers, as it prevents them from ensuring that the votes they've acquired will be counted in the final tally. As a consequence, they can only return bribes after votes are published on the bulletin board.
+Before voting begins, each voter receives a voting calculator containing a secret private key and registered public key. These public keys undergo **open transactional anonymization** through sequential braiding operations in an exponentiation mix. Anyone can participate in this anonymization process, with each braider providing zero-knowledge proofs of honest behavior.
 
-To ensure the voting process's integrity, the voter's device must remain trustworthy. With the presence of malware, there's a risk that the device could falsely reassure the voter that their vote is cast as intended. To counter this threat, after the vote is submitted, the voter receives a receipt containing a *timestamp* of the vote's record, the *pseudonym* under which it was cast, and the *index* where the vote resides on the ledger. Once voting concludes and all votes are disclosed on the bulletin board, the voter can cross-reference their receipt with the bulletin board, verifying that the vote at the provided *index* aligns with their choice and matches the *timestamp* when the vote was cast, as well as checking that it was included in the final tally. By maintaining a written record, voters can ensure the accuracy of their vote, safeguarding against malware alterations, unauthorised revoting, or any attempts to redirect multiple voters to a singular vote.
+This creates a braided generator and a list of eligible pseudonyms that determines your anonymous voting identity while maintaining eligibility verification. The beauty of this approach is that it eliminates the need for complex coordination—braiding can be done one transaction at a time by entirely untrusted parties.
 
-However, it's essential to acknowledge that voters can only detect malware interference post-vote when comparing their receipt to the bulletin board. Additionally, a voter cannot provide evidence to others that their vote was compromised by malware, which means these instances aren't audited within the PeaceFounder system. As a result, members are encouraged and are responsible for utilising more secure devices less susceptible to malware attacks. For more advanced threats, like a briber mandating malware installation for monitoring or extracting the master key, the use of tamper-resistant hardware becomes essential – an extension larger organisations or states might consider.
+### Phase 2: Voting - Cryptographic Commitments
 
-## Summary
+~~~
+<div class="image-hero" style="margin: 3rem 0;">
+  <img src="/assets/voting.png" alt="Voting Process" style="max-width: 75%;" />
+  <div class="img-source">CC: Jānis Erdmanis</div>
+</div>
+~~~
 
-The PeaceFounder e-voting system ensures security, transparency, and privacy as follows:
+When you vote, your voting calculator creates a sophisticated cryptographic envelope containing two main components: a publicly verifiable part with cryptographic commitments and an encrypted part that only the tallier can access. The vote structure includes:
 
-**Security**:
+**Vote commitments** that hide both your selection and tracker preimages using perfectly hiding Pedersen commitments, **identity commitments** that bind your identity to the vote, and **encrypted openings** that contain the mathematical keys needed later for verification—all signed with your anonymized pseudonym.
 
-- **Centralised Responsability**: PeaceFounder does not rely on multiparty ceremonies to ensure voters' privacy or distributed ledgers for the immutability of the records. This enables a single maintainer deployment. 
-- **Anonymity Braiding**: The braid primitive lets anonymisation be handled with one transaction at a time, circumventing the need for multiparty ceremonies, which are vulnerable to sabotage attacks. Integrity is guaranteed with battle-tested zero-knowledge proofs, allowing the braiding to be done by an entirely untrusted party.
-- **Malware Detection**: The vote displayed on a voter's device matches the vote registered on the bulletin board, preventing any mismatches due to potential malware interference. The device detects if votes have been cast outside the device in cases of key leaks due to spyware or faulty cryptography.
-- **Undisputable Evidence:** Even if an adversary controlled the system, there would be no way to fabricate election results without being detected in the public evidence. 
+~~~
+<div class="content-highlight">
+  <strong>Critical Security Step:</strong> After casting your vote, you must isolate your voting calculator using a kill switch or Faraday cage. This isolation is essential for unconditional individual verifiability.
+</div>
+~~~
 
-**Transparency**:
+~~~
+<div class="isolation-detail">
+  <h4>Why Isolation Works Even With Corrupt Devices</h4>
+  <p>The isolation isn't about trusting your device—it's about <strong>information flow control</strong>. After voting closes, you get a unique challenge that only works with your vote. A corrupt calculator can't show you someone else's tracker because:</p>
+  <ul>
+    <li>It doesn't know other voters' challenges (they're published after isolation)</li>
+    <li>It can't guess valid trackers (probability: 1 in 2^256)</li>
+    <li>Any fake tracker it shows won't exist on the tally board</li>
+  </ul>
+  <p><strong>Simple isolation methods:</strong> Airplane mode, unplugging ethernet, or a Faraday cage. The key is preventing communication, not device integrity.</p>
+</div>
+~~~
 
-- **Embedded Bulletin Board Oversight**: Member devices actively monitor the bulletin board, ensuring the immutability of records. This provides an immediate layer of oversight and transparency.
-- **Individually Verifiable**: After the vote, members can verify their receipt against the bulletin board to ensure their vote was registered correctly, assuring them that their vote did count.
-- **Accessible Experience**: PeaceFounder is designed to minimise voters' exposure to complicated cryptographic elements, ensuring that they can vote privately without needing to delve into complex technical details while maintaining the cryptographic soundness of the shown information.
-- **Auditable**: The auditor plays a central role in upholding the system's integrity. They validate bulletin board records, ensuring each vote is eligible and unlinkable. They also prevent the spread of misinformation by cross-checking each other's findings, preventing the spread of false claims.
-- **Separate Authenticity Auditing:** Auditing of the authenticity of the members can be done separately from elections and thus can be less frequent than in conventional E2E verifiable systems.
-- **Monitorable**: Auditors can observe uncooperative bulletin boards, particularly in case a member's vote can't be recorded and form a piece of incriminating evidence if they attempt to do so.
+### Phase 3: Tally Board Announcement
 
-**Privacy**:
+Once voting closes, the tallier processes all collected votes to create the public tally board. A crucial security feature is that the tallier computes a **verifiably random seed** from all vote commitments, which generates unique tracker challenges for each voter. This ensures no tracker can be computed before the voting phase closes—a key requirement for unconditional individual verifiability.
 
-- **Anonymity**: As member pseudonyms are braided sequentially with one braider at a time, only one honest braider is necessary to guarantee the anonymity of the cast vote. 
-- **Coercion and bribery resistance**: Features such as time-restricted receipt freeness and revoting ensure that voters cannot be coerced or bribed effectively, as their actual votes remain private.
+The system then publishes a tally board containing all votes with corresponding tracking numbers, created through a verifiable commitment shuffle that anonymizes votes while preserving vote-tracker pairings. This provides **everlasting privacy** through information-theoretic hiding rather than computational assumptions.
 
-In summary, the PeaceFounder e-voting system is built upon the idea of verifiably anonymising voters' pseudonyms rather than their votes. This addresses the tension between security, transparency and privacy without requiring the coordination of multiparty ceremonies. By implementing innovations and focusing on both voter experience and cryptographic soundness, PeaceFounder presents a holistic approach to e-voting.
+### Phase 4: Verification - Post-Cast Isolation
 
-------------------
+~~~
+<div class="image-hero" style="margin: 3rem 0;">
+  <img src="/assets/individual_verifiability.png" alt="Individual Verifiability" style="max-width: 75%;" />
+  <div class="img-source">CC: Jānis Erdmanis</div>
+</div>
+~~~
 
-Essential resources for zero-knowledge proofs:
+The final phase enables you to verify your vote was correctly recorded and counted. You retrieve your unique tracker challenge from the bulletin board along with proof of your pseudonym ownership, then enter this challenge into your isolated voting calculator.
+
+Your calculator computes your personal tracker using the formula: $t = e \cdot \theta + e^* \cdot \lambda$, where $e$ is your challenge, $e^*$ is a hash of your challenge, and $(\theta, \lambda)$ are your tracker preimages. This dual-component design prevents coercers from linking trackers computed during voting to actual trackers after the voting phase closes.
 
 
-{{cite brickell1993 buterin2022}}
+~~~
+<div class="unconditional-explanation">
+  <h4>What "Unconditional" Really Means</h4>
+  <p>Unlike other e-voting systems where verifiability depends on trusting authorities, software, or hardware, PeaceFounder's verification works even when:</p>
+  <ul style="margin-left:2rem;">
+    <li>Your voting calculator is completely compromised</li>
+    <li>The tallier tries to manipulate results</li>
+    <li>Your voting device has malware</li>
+    <li>Election authorities are corrupt</li>
+  </ul>
+  <p>You only need to trust: (1) your ability to isolate the calculator temporarily, and (2) basic math (discrete logarithm hardness).</p>
+</div>
 
-Recomputing public keys for shifted generators and their variations have already been proposed together with voting systems but seem to have been sidelined:
+<div class="feature-callout">
+  <h3>Receipt Freeness Through Tracker Override</h3>
+  <p>For protection against coercion, you can configure your calculator to display any tracker from the tally board instead of your real one, allowing you to hide your true vote while maintaining your ability to verify independently.</p>
+</div>
 
-{{cite ryan2016 haenni2011 neff2001}}
 
-For WikstromTeralius variant of shuffle, check out: 
+<div class="isolation-detail">
+  <div class="image-hero" style="margin-bottom:1.5rem; margin-top:0rem;">
+    <img src="/assets/decoy-states.png" alt="Decoy States" style="max-width: 60%;" />
+  </div>
 
-{{cite wikstrom2005 wikstrom2009 terelius2010 brenner2017 wikstrom2011}}
+  <h4>FAQ: How Can You Verify AND Deny Your Vote?</h4>
+  <p><strong>Q:</strong> If I can show fake trackers to coercers, how is my verification meaningful?</p>
+  <p><strong>A:</strong> The tracker override is a local setting you control. YOU know whether you're looking at your real tracker or a fake one. A coercer cannot tell the difference as it has no control on the flow of information in the calculator as long as it remains in your possession, but you do. This gives you both genuine verification and plausible deniability.</p>
+</div>
+~~~
+
+## Deployment Architecture
+
+~~~
+<div class="image-hero" style="margin: 3rem 0;">
+  <img src="/assets/model-dependencies.svg" alt="PeaceFounder Security Model" style="max-width: 75%;" />
+  <div class="img-source">CC: Jānis Erdmanis</div>
+</div>
+~~~
+
+PeaceFounder operates as a modular microservice architecture that manages the **deme**—the system state defining participants and their permissions. The architecture centers on three key roles with clearly defined responsibilities and trust boundaries, designed to scale from small organizational elections to large-scale democratic processes.
+
+The guardian configures the deme and manages the identities of registrars and proposers, establishing foundational trust relationships and system parameters that define who can register voters and initiate elections within the deme. The registrar handles member registration and maintenance, requiring SMTP configuration for email invitations and ideally a public IP address with DNS setup for optimal accessibility. Members receive invitations, register their devices, and confirm registration through a shared identity provider, enabling seamless integration with existing authentication systems and supporting remote registration through established organizational portals.
+
+The proposer creates and submits election proposals that define the voting options, time windows, and other election parameters. During the voting phase, voters receive these proposals containing the braided generator, voting time window, and voting options. The anonymization process occurs through external demes that perform exponential mixing on pseudonyms. This automated braiding process produces anonymized outputs with accompanying zero-knowledge proofs of integrity, requiring no manual coordination and enabling security through decentralized participation or centralized brokers as needed. The system maintains a pool of certified braiders to ensure anonymization can proceed even if some participants become unavailable.
+
+When elections begin, registered voters receive the proposer's election proposals containing braided generators, time windows, and voting options through redundant delivery channels. The voting process maintains anonymity through Tor-based delivery with fallback anonymization networks, where voters sign their selections with anonymized pseudonyms and submit them through the anonymity network to prevent traffic analysis and tracking. If primary anonymity networks become unavailable, the system gracefully degrades to alternative privacy-preserving channels while maintaining audit trails of any such transitions.
+
+~~~
+<div class="isolation-detail">
+  <h3>Deployment Options</h3>
+  <div class="deployment-scenario">
+    <h4>Basic Deployment: Individual Verifiability Only</h4>
+    <p>
+      In basic deployment without voting calculators, voters select their preferences on their voting device and sign with their pseudonym, delivering the vote anonymously via Tor. Once voting ends, voters can locate their vote listed alongside their pseudonym alias with a timestamp (or identity commitment in future versions) confirming exclusive vote ownership. The system provides clear voter education materials and simplified verification interfaces to ensure accessibility across technical skill levels.
+    </p>
+    <p><strong>Best for:</strong> Elections where vote buying and coercion are not primary concerns, but verifiable integrity is essential.</p>
+  </div>
+  
+  <div class="deployment-scenario">
+    <h4>Enhanced Deployment: With Receipt-Freeness and Everlasting Privacy</h4>
+    <p>
+      For deployments with voting calculators, voters make their selection on the voting device, then enter their PIN into the voting calculator to assemble vote commitments, tracker commitments, and encrypted openings. The voting device delivers these via Tor, after which voters isolate their calculators from all communication.
+    </p>
+    <p>
+      Post-voting, voters access their preferred bulletin board mirror to retrieve their unique challenge alongside their identity commitment. They enter this challenge into their isolated calculator to compute their personal tracker, enabling vote location on the tally board. For coercion resistance, voters can configure their calculator into a decoy state using any preferred tracker from the tally board. 
+    </p>
+    <p><strong>Best for:</strong> High-stakes elections where coercion resistance and long-term privacy protection are critical requirements.</p>
+  </div>
+</div>
+~~~
+
+The system ensures bulletin board immutability through history trees that every voter's device employs with consistency proof chains to guarantee that votes are not selectively discarded during voting. This innovative approach provides assurance that both the voter's own vote and votes cast by others don't get dropped before tallying, enabling immediate transparency and tamper detection without the overhead of traditional replication schemes. If votes are improperly excluded, a proof of dishonesty that can be publicly verified can be extracted from the voting device. 
+
+For enhanced transparency and independent verification, the bulletin board can be published to a Git repository after voting closes, with continuous integration pipelines automatically verifying cryptographic proofs and tallies. This creates an immutable, distributed record enabling independent verification by multiple parties and making auditing tools accessible to the broader technical community. Automated dispute resolution mechanisms provide clear protocols for handling verification discrepancies, while comprehensive logging ensures full accountability throughout the election process.
+
+--- 
+
+{{cite PeaceFounder2024 ShuffleProofs2022 Ryan2016 Haenni2011 UniVote2013 Wikstrom2005 Wikstrom2011 Haenni2017 Crosby2009 DRAND2017 Tor2004}}
