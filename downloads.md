@@ -103,10 +103,11 @@
 
 The development prototype includes comprehensive documentation for setting up test elections and verifying the cryptographic protocols. We recommend starting with the provided test scenarios to understand the system's operation.
 
+The PeaceFounder e-voting system offers two deployment options. A basic mode that displays votes on the tally board, signed directly with their pseudonym, and can be used without calculators. A main mode that requires voters to have calculators on hand provides vote deniability and permanent privacy for high-stakes elections. Currently, only the basic mode is supported.
+
 ~~~
 <div class="warning-notice"><strong>⚠️ Development Preview Notice:</strong> This prototype is intended for research and testing purposes only. It can be used on a small scale in low stakes scenarios until production hardening happens.</div>
 ~~~
-
 
 ### Server Setup
 

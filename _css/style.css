@@ -850,6 +850,58 @@ width: 100px;
   margin-bottom: 1rem;
 }
 
+/* blockquote { */
+/*   background: #f8f8f8; */
+/*   border-radius: 8px; */
+/*   padding: 2rem; */
+/*   margin: 2rem 0; */
+/* } */
+
+/* blockquote p { */
+/*   margin-bottom: 1rem !important; */
+/* } */
+
+/* .isolation-detail h3 { */
+/*   font-size:1.5rem; */
+/* } */
+
+/* .isolation-detail p { */
+/*   margin-top:1.5rem; */
+/* } */
+
+
+blockquote {
+  /* background: #f8f9fa; */
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 8px;
+  padding: 2rem;
+  padding-top: 1rem;
+  margin: 2rem 0;
+  /* border-left: 4px solid #17a2b8; */
+}
+
+blockquote p:last-of-type {
+  margin-bottom: 0 !important;
+}
+
+blockquote ul {
+  margin-top: 1.5rem;
+  margin-left:2rem;
+}
+
+blockquote h3 {
+  margin-top:1rem;
+  font-size:1.5rem;
+}
+
+blockquote p {
+  margin-top:1rem;
+  margin-bottom: 1rem !important;
+  
+}
+
+
+
 .contact-section {
   background: #f0f0f0;
   border-radius: 8px;
