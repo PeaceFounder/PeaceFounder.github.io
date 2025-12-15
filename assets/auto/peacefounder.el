@@ -23,6 +23,7 @@
     "sampigethaya2006"
     "schneider2017"
     "veliz2021"
-    "Wikstrom2005"))
+    "Wikstrom2005"
+    "Selene2016"))
  '(or :bibtex :latex))
 
