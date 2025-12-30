@@ -12,6 +12,7 @@
     "Haenni2011"
     "Haenni2017"
     "PeaceFounder2024"
+    "PeaceFounder2025"
     "Ryan2016"
     "ShuffleProofs2022"
     "Tor2004"

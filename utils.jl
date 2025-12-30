@@ -37,10 +37,11 @@ function ref_item(ref, infos)
     write(io, "<li id=\"#$ref\">")
 
     for entry in author_list
+
         splitted = split(entry, ",")
 
         if length(splitted) == 1
-            write(io, splitted[1])
+            write(io, "$(splitted[1]), ")
         else
             last, first = strip.(splitted)
             write(io, "$first $last, ")
